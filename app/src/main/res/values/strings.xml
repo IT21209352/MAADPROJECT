@@ -39,6 +39,7 @@
     <string name="user_phn_number">Mobile Phone Number</string>
     <string name="btn_clear">CLEAR</string>
     <string name="txt_email">Enter Your Email Address</string>
+    <string name="btn_logout">LOGOUT</string>
 
 
 </resources>
