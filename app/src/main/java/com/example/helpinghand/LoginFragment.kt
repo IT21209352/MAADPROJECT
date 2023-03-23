@@ -54,10 +54,7 @@ class LoginFragment : Fragment() {
                             // Sign in success, update UI with the signed-in user's information
                             val user = auth.currentUser
                             Toast.makeText(activity, "Login Successful", Toast.LENGTH_SHORT).show()
-                            activity?.let {
-                                val intent = Intent(it,MainActivity2::class.java)
-                                it.startActivity(intent)
-                            }
+
 
                         } else {
                             // If sign in fails, display a message to the user.
@@ -67,6 +64,11 @@ class LoginFragment : Fragment() {
 
                         }
                     }
+            }
+
+            activity?.let {
+                val intent = Intent(it,MainActivity2::class.java)
+                it.startActivity(intent)
             }
         }
 
