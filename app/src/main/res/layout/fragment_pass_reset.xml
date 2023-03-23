@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".PassResetFragment" >
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/header_height"
+        android:background="@color/orange"
+        android:gravity="center|center_horizontal"
+        android:text="@string/app_name"
+        android:textColor="@color/black"
+        android:textSize="@dimen/header_textsize" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="301dp"
+        android:contentDescription="@string/contentDescriptionLogo"
+        android:src="@drawable/logotrans" />
+
+    <TextView
+        android:id="@+id/frogot_password_link"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:gravity="center"
+        android:text="@string/txt_newPass"
+        android:textColor="@color/red"
+        android:textStyle="bold|italic" />
+
+    <EditText
+        android:id="@+id/editTextTextPassword"
+        android:layout_width="@dimen/width_inputbutton"
+        android:layout_height="@dimen/height_inputbutton"
+        android:layout_gravity="center"
+        android:width="@dimen/width_inputbutton"
+        android:autofillHints="@string/txt_enterpassword"
+        android:ems="10"
+        android:gravity="center|center_horizontal|center_vertical"
+        android:hint="@string/txt_hint_pass"
+        android:inputType="textPassword" />
+
+    <EditText
+        android:id="@+id/editTextTextPasswordReType"
+        android:layout_width="@dimen/width_inputbutton"
+        android:layout_height="@dimen/height_inputbutton"
+        android:layout_gravity="center"
+        android:width="@dimen/width_inputbutton"
+        android:autofillHints="@string/txt_enterpassword"
+        android:ems="10"
+        android:gravity="center|center_horizontal|center_vertical"
+        android:hint="@string/txt_hint"
+        android:inputType="textPassword" />
+
+    <Button
+        android:id="@+id/button_register"
+        android:layout_width="@dimen/width_inputbutton"
+        android:layout_height="@dimen/height_inputbutton"
+        android:layout_gravity="center"
+        android:width="@dimen/width_inputbutton"
+        android:gravity="center|center_horizontal|center_vertical"
+        android:text="@string/txt_btn_confirm"
+        android:textSize="@dimen/button_textSize" />
+
+
+
+</LinearLayout>
+
