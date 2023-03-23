@@ -62,14 +62,20 @@ class LoginFragment : Fragment() {
                             Toast.makeText(activity, "Authentication failed.",
                                 Toast.LENGTH_SHORT).show()
 
+                            activity?.let {
+                                val intent = Intent(it,MainActivity2::class.java)
+                                it.startActivity(intent)
+                            }
+
                         }
                     }
             }
-
             activity?.let {
                 val intent = Intent(it,MainActivity2::class.java)
                 it.startActivity(intent)
             }
+
+
         }
 
 
