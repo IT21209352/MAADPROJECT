@@ -8,8 +8,8 @@
 
     <ImageView
         android:id="@+id/imgBtn2"
-        android:layout_width="59dp"
-        android:layout_height="48dp"
+        android:layout_width="@dimen/menu_image_width"
+        android:layout_height="@dimen/menu_image_height"
         android:layout_marginTop="2dp"
         android:layout_marginBottom="2dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -17,12 +17,12 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/imgBtn1"
         app:layout_constraintTop_toBottomOf="@+id/divider"
-        app:srcCompat="@android:drawable/ic_menu_add" />
+        app:srcCompat="@drawable/posts_notselected" />
 
     <ImageView
         android:id="@+id/imgBtn1"
-        android:layout_width="55dp"
-        android:layout_height="49dp"
+        android:layout_width="@dimen/menu_image_width"
+        android:layout_height="@dimen/menu_image_height"
         android:layout_marginTop="2dp"
         android:layout_marginBottom="2dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -30,12 +30,12 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/divider"
-        app:srcCompat="@drawable/ic_home_black_24dp" />
+        app:srcCompat="@drawable/home_notselected" />
 
     <ImageView
         android:id="@+id/imgBtn3"
-        android:layout_width="59dp"
-        android:layout_height="48dp"
+        android:layout_width="@dimen/menu_image_width"
+        android:layout_height="@dimen/menu_image_height"
         android:layout_marginStart="2dp"
         android:layout_marginTop="2dp"
         android:layout_marginBottom="1dp"
@@ -45,12 +45,12 @@
         app:layout_constraintStart_toEndOf="@+id/imgBtn2"
         app:layout_constraintTop_toBottomOf="@+id/divider"
         app:layout_constraintVertical_bias="0.333"
-        app:srcCompat="@drawable/ic_dashboard_black_24dp" />
+        app:srcCompat="@drawable/newpost_notselected" />
 
     <ImageView
         android:id="@+id/imgBtn4"
-        android:layout_width="59dp"
-        android:layout_height="48dp"
+        android:layout_width="@dimen/menu_image_width"
+        android:layout_height="@dimen/menu_image_height"
         android:layout_marginTop="2dp"
         android:layout_marginBottom="2dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -58,12 +58,12 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/imgBtn3"
         app:layout_constraintTop_toBottomOf="@+id/divider"
-        app:srcCompat="@android:drawable/sym_action_chat" />
+        app:srcCompat="@drawable/profile_noselected" />
 
     <ImageView
         android:id="@+id/imgBtn5"
-        android:layout_width="59dp"
-        android:layout_height="48dp"
+        android:layout_width="@dimen/menu_image_width"
+        android:layout_height="@dimen/menu_image_height"
         android:layout_marginTop="2dp"
         android:layout_marginBottom="2dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -71,7 +71,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/imgBtn4"
         app:layout_constraintTop_toBottomOf="@+id/divider"
-        app:srcCompat="@android:drawable/btn_star"/>
+        app:srcCompat="@drawable/chat_notselected" />
 
     <View
         android:id="@+id/divider"
