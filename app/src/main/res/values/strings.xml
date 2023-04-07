@@ -34,7 +34,7 @@
     <string name="txt_hint">Re-Type the Password</string>
     <string name="txt_btn_confirm">CONFIRM</string>
 
-    <string name="enter_details">Enter your details below</string>
+       <string name="enter_details">Enter your details below</string>
     <string name="user_name">A User Name</string>
     <string name="user_phn_number">Mobile Phone Number</string>
     <string name="btn_clear">CLEAR</string>
@@ -43,6 +43,20 @@
     <string name="comment_hint">Writer your comment here...</string>
     <string name="loadingComment_hint">Loading Comments...</string>
     <string name="posterName">Loading Authors Name...</string>
+
+    <string name="title_NewPost">NEW POST</string>
+    <string name="newPostHint">Write something about your post..</string>
+    <string name="btn_post">POST</string>
+    <string name="title_Post">POST</string>
+    <string name="btn_edit">EDIT</string>
+    <string name="btn_delete">DELETE</string>
+
+    <string name="messages">Messages</string>
+    <string name="search">Search</string>
+    <string name="message">Type your message</string>
+    <string name="deleteMsg">Delete Message</string>
+    <string name="editMsg">Edit Message</string>
+    <string name="deleteChat">Delete Chat</string>
 
 
 </resources>
