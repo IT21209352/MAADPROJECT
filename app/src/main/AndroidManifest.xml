@@ -14,14 +14,14 @@
         <activity
             android:name=".MainActivity2"
             android:exported="false" />
-        <activity
-            android:name=".HomeActivity"
-            android:exported="false"
-            android:label="@string/title_activity_home" />
-        <activity
-            android:name=".NavigationActivity2"
-            android:exported="false"
-            android:label="@string/title_activity_navigation2" />
+<!--        <activity-->
+<!--            android:name=".HomeActivity"-->
+<!--            android:exported="false"-->
+<!--            android:label="@string/title_activity_home" />-->
+<!--        <activity-->
+<!--            android:name=".NavigationActivity2"-->
+<!--            android:exported="false"-->
+<!--            android:label="@string/title_activity_navigation2" />-->
         <activity
             android:name=".MainActivity"
             android:exported="true">
