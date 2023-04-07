@@ -2,6 +2,8 @@ package com.example.helpinghand
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.TextUtils
+import android.text.TextUtils.replace
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -29,6 +31,11 @@ class ChatFragment : Fragment() {
         val adapter = ChatListAdapter()
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(activity)
+
+
+
+
+
 
 
 //        popupMenu()

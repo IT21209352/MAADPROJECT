@@ -1,16 +1,24 @@
 package com.example.helpinghand.adapters
 
+import android.content.Context
+import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+
 import androidx.recyclerview.widget.RecyclerView
+import com.example.helpinghand.ChatMessagesActivity
 import com.example.helpinghand.R
+
+
 
 class ChatListAdapter:RecyclerView.Adapter<ChatListAdapter.ViewHolder>(){
 
     class ViewHolder(view: View):RecyclerView.ViewHolder(view){
+
 
         val imgUser: ImageView
         val tvChatName: TextView
@@ -35,19 +43,27 @@ class ChatListAdapter:RecyclerView.Adapter<ChatListAdapter.ViewHolder>(){
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+
         holder.tvChatName.text = "Adam Driver"
         holder.tvRecMsg.text = "Hello! I'm Fine!"
         holder.tvMsgCount.text = "1"
         holder.tvRecTime.text = "11.11PM"
-//        holder.itemView.setOnClickListener()
+
+        holder.itemView.setOnClickListener { view ->
+            val intent = Intent(view.context, ChatMessagesActivity::class.java)
+            view.context.startActivity(intent)
+        }
+
+//        holder.itemView.setOnLongClickListener( {
+//
+//        })
+
+
     }
 
     override fun getItemCount(): Int {
         return 1
     }
-
-
-
 
 
 }
