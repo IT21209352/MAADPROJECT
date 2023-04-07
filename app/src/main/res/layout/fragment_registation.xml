@@ -100,5 +100,11 @@
         android:text="@string/txt_btn_register"
         android:textSize="@dimen/button_textSize" />
 
+    <ProgressBar
+        android:id="@+id/registerProgressBar"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" />
 
 </LinearLayout>
