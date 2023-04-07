@@ -21,7 +21,7 @@
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
-        android:layout_height="301dp"
+        android:layout_height="233dp"
         android:contentDescription="@string/contentDescriptionLogo"
         android:src="@drawable/logotrans" />
 
@@ -78,4 +78,11 @@
         android:text="@string/frogot_password"
         android:textColor="@color/red"
         android:textStyle="bold|italic" />
+
+    <ProgressBar
+        android:id="@+id/loginProgressBar"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" />
 </LinearLayout>

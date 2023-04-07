@@ -23,7 +23,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
 
-
 //        val db = Firebase.firestore
 //        val user = hashMapOf(+
 //            "last" to "Lovelace",
