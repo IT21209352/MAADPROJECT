@@ -80,7 +80,7 @@
         </com.google.android.material.card.MaterialCardView>
 
     <Button
-        android:id="@+id/button_registe"
+        android:id="@+id/button_post"
         android:layout_width="@dimen/width_inputbutton"
         android:layout_height="@dimen/height_inputbutton"
         android:layout_gravity="center"
