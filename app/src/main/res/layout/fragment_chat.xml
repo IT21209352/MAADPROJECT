@@ -1,17 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ChatFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-
-    <ImageView
-        android:id="@+id/imageView2"
+    <TextView
+        android:id="@+id/tvMessages"
         android:layout_width="match_parent"
-        android:layout_height="407dp"
-        android:src="@drawable/logoredpurple" />
+        android:text="@string/messages"
+        android:textStyle="bold"
+        android:textSize="24sp"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:padding="10dp"
+        android:background="@color/orange"
+        android:textColor="@color/black"
+        android:layout_height="70dp"/>
 
-</FrameLayout>
+    <EditText
+        android:id="@+id/edtSearch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvMessages"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginBottom="10dp"
+        android:inputType="text"
+        android:background="@drawable/input_background"
+        android:hint="@string/search"
+        android:padding="10dp"
+        android:textSize="22sp"
+        android:autofillHints="search" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_chatList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/edtSearch"
+        />
+
+
+
+</RelativeLayout>
