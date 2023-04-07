@@ -47,9 +47,12 @@
     <string name="title_NewPost">NEW POST</string>
     <string name="newPostHint">Write something about your post..</string>
     <string name="btn_post">POST</string>
-    <string name="title_Post">POST</string>
+
+    <string name="title_Post">POSTS</string>
     <string name="btn_edit">EDIT</string>
     <string name="btn_delete">DELETE</string>
+    <!---->
+
 
     <string name="messages">Messages</string>
     <string name="search">Search</string>
