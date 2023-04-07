@@ -13,5 +13,9 @@
     <dimen name="menu_image_width">40dp</dimen>
     <dimen name="inputANDview_height">50dp</dimen>
 
+    <dimen name="textSmall">18sp</dimen>
+    <dimen name="textMedium">20sp</dimen>
+    <dimen name="textLarge">24sp</dimen>
+
 
 </resources>
