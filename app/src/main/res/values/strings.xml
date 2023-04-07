@@ -40,5 +40,11 @@
     <string name="btn_clear">CLEAR</string>
     <string name="txt_email">Enter Your Email Address</string>
 
+    <!-- shabry  -->
+    <string name="title_NewPost">NEW POST</string>
+    <string name="newPostHint">Write something about your post..</string>
+    <string name="btn_post">POST</string>
+    <!---->
+
 
 </resources>

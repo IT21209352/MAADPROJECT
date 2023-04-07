@@ -4,30 +4,90 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PostFragment">
+    tools:context=".PostFragment"
+    android:background="@color/white">
 
     <!-- TODO: Update blank fragment layout -->
 
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/orange"
-        android:gravity="center"
-        android:text="NEW POST"
-        android:textSize="28sp"
-        android:textStyle="bold">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    </TextView>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/orange"
+            android:gravity="center"
+            android:text="@string/title_NewPost"
+            android:textSize="28sp"
+            android:textStyle="bold">
 
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:src="@drawable/new_post3"
+        </TextView>
 
 
-        />
 
+           <ImageView
+               android:id="@+id/imageView3"
+               android:layout_width="200dp"
+               android:layout_height="199dp"
+               android:layout_gravity="center"
+
+               android:layout_marginTop="15dp"
+               android:src="@drawable/new_post3" />
+
+
+    </LinearLayout>
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardView1"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+
+            android:layout_marginTop="280dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="8dp"
+            app:cardUseCompatPadding="true"
+            app:layout_constraintHorizontal_bias="0.5"
+
+            >
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:background="@color/white"
+                app:boxStrokeWidth="0dp"
+                app:boxStrokeWidthFocused="0dp"
+                app:hintEnabled="false">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/emailEt"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/white"
+                    android:gravity="start"
+                    android:hint="@string/newPostHint"
+                    android:inputType="textEmailAddress"
+                    android:paddingStart="12dp"
+                    android:paddingTop="15dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
+                    android:textSize="16sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+        </com.google.android.material.card.MaterialCardView>
+
+    <Button
+        android:id="@+id/button_registe"
+        android:layout_width="@dimen/width_inputbutton"
+        android:layout_height="@dimen/height_inputbutton"
+        android:layout_gravity="center"
+        android:layout_marginTop="300dp"
+        android:width="@dimen/width_inputbutton"
+        android:gravity="center|center_horizontal|center_vertical"
+        android:text="@string/btn_post"
+        android:textSize="@dimen/button_textSize" />
 
 </FrameLayout>
