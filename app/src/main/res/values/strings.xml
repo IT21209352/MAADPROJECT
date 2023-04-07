@@ -41,5 +41,11 @@
     <string name="txt_email">Enter Your Email Address</string>
     <string name="btn_logout">LOGOUT</string>
 
+    <!-- shabry  -->
+    <string name="title_NewPost">NEW POST</string>
+    <string name="newPostHint">Write something about your post..</string>
+    <string name="btn_post">POST</string>
+    <!---->
+
 
 </resources>
