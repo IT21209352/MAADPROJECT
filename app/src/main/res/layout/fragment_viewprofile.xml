@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".viewprofile">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/ViewProfile"
+            android:padding="10dp"
+            android:textAlignment="center"
+            android:textSize="22sp"
+            android:textColor="@color/black"
+            android:background="@color/orange"
+            />
+
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="230dp"
+            android:background="@color/blue_300">
+
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:id="@+id/imageView_profile_dp"
+                android:layout_centerInParent="true"
+                android:background="@drawable/use_profile"/>
+
+            <TextView
+                android:id="@+id/textView_show_welcome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/imageView_profile_dp"
+                android:layout_centerHorizontal="true"
+                android:layout_margin="5dp"
+                android:hint="Name"
+                android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                android:textColor="@color/orange_light" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="15dp"
+            android:background="@color/white"/>
+
+        <ImageView
+            android:id="@+id/profile"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:background="@drawable/use_profile" />
+
+        <TextView
+            android:id="@+id/textView_show_FullName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@id/profile"
+            android:layout_marginStart="50dp"
+            android:hint="full name"
+            android:textSize="18sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="20dp"
+            android:layout_bellow="@id/profile"
+            android:background="@android:color/darker_gray"/>
+
+        <ImageView
+            android:id="@drawable/baseline_email_24"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:background="@drawable/baseline_email_24" />
+
+        <TextView
+            android:id="@+id/textView_show_Email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@id/Email"
+            android:layout_marginStart="50dp"
+            android:hint="Email"
+            android:textSize="18sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="20dp"
+            android:layout_bellow="@id/profile"
+            android:background="@android:color/darker_gray"/>
+
+
+        <TextView
+            android:id="@+id/textView_show_workplace"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@id/profile"
+            android:layout_marginStart="50dp"
+            android:hint="work place"
+            android:textSize="18sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="20dp"
+            android:layout_bellow="@id/profile"
+            android:background="@android:color/darker_gray"/>
+
+
+
+
+        <TextView
+            android:id="@+id/textView_show_Position"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@id/profile"
+            android:layout_marginStart="50dp"
+            android:hint="position"
+            android:textSize="18sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="20dp"
+            android:layout_bellow="@id/profile"
+            android:background="@android:color/darker_gray"/>
+
+
+        <TextView
+            android:id="@+id/textView_show_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@id/profile"
+            android:layout_marginStart="50dp"
+            android:hint="password"
+            android:textSize="18sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="20dp"
+            android:layout_bellow="@id/profile"
+            android:background="@android:color/darker_gray"/>
+
+
+
+        <TextView
+            android:id="@+id/textView_show_country"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginStart="50dp"
+            android:hint="Country"
+            android:textSize="18sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="20dp"
+            android:layout_bellow="@id/profile"
+            android:background="@android:color/darker_gray"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </LinearLayout>
+
+
+
+
+
+
+
+
+
+</ScrollView>

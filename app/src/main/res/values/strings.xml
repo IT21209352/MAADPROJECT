@@ -34,7 +34,7 @@
     <string name="txt_hint">Re-Type the Password</string>
     <string name="txt_btn_confirm">CONFIRM</string>
 
-       <string name="enter_details">Enter your details below</string>
+    <string name="enter_details">Enter your details below</string>
     <string name="user_name">A User Name</string>
     <string name="user_phn_number">Mobile Phone Number</string>
     <string name="btn_clear">CLEAR</string>
@@ -60,6 +60,28 @@
     <string name="deleteMsg">Delete Message</string>
     <string name="editMsg">Edit Message</string>
     <string name="deleteChat">Delete Chat</string>
+
+    <string name="Name">Name</string>
+    <string name="Email">Email</string>
+    <string name="phone">Phone</string>
+    <string name="newPassword">newPassword</string>
+    <string name="re_type_password">re type password</string>
+    <string name="workPlace">workPlace</string>
+    <string name="Country">Country</string>
+    <string name="Position">Position</string>
+    <string name="Notification">Notification</string>
+    <string name="EditProfile">Edit Profile</string>
+    <string name="ViewProfile">View Profile</string>
+    <string name="userProfile">User Profile</string>
+    <string name="deleteProfile">Delete Profile</string>
+    <string name="fullName">FullName</string>
+    <string name="faq">FAQ</string>
+    <string name="olutionForVeterinary">solution for veterinary</string>
+    <string name="ICanHelpForYourMedicalIssues">I Can  Help For your medical Issues</string>
+    <string name="time">10.45pm</string>
+    <string name="WriteYourComment">write your comments</string>
+    <string name="delete">Delete</string>
+    <string name="add">Add</string>
 
 
 </resources>
