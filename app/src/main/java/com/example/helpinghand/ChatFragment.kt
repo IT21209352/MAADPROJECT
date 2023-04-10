@@ -33,56 +33,6 @@ class ChatFragment : Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(activity)
 
 
-
-
-
-
-
-//        popupMenu()
-
-
     }
-
-//    private fun popupMenu() {
-//        // creating a object of Popupmenu
-//        val popupMenu = androidx.appcompat.widget.PopupMenu(this,)
-//
-//        // we need to inflate the object
-//        // with popup_menu.xml file
-//        popupMenu.inflate(R.menu.popup_chat)
-//
-//        // adding click listener to image
-//        popupMenu.setOnMenuItemClickListener {
-//            when (it.itemId) {
-//                R.id.delete -> {
-//                    Toast.makeText(activity, "Deleted", Toast.LENGTH_SHORT).show()
-//                    true
-//                }
-//                else -> {
-//                    true
-//                }
-//            }
-//
-//        }
-//
-//        // event on long press on image
-//        recyclerView.setOnLongClickListener {
-//            try {
-//                val popup = androidx.appcompat.widget.PopupMenu::class.java.getDeclaredField("mPopup")
-//                popup.isAccessible = true
-//                val menu = popup.get(popupMenu)
-//                menu.javaClass.getDeclaredMethod("setForceShowIcon", Boolean::class.java)
-//                    .invoke(menu,true)
-//            }
-//            catch (e: Exception)
-//            {
-//                Log.d("error", e.toString())
-//            }
-//            finally {
-//                popupMenu.show()
-//            }
-//            true
-//        }
-//    }
 
 }
