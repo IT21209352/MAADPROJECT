@@ -9,11 +9,11 @@ class MainActivity2 : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main2)
 
-        val HomeBtn:ImageView = findViewById(R.id.imgBtn1)
-        val ProfileBtn:ImageView = findViewById(R.id.imgBtn2)
-        val PostsBtn:ImageView = findViewById(R.id.imgBtn3)
-        val MyPostsBtn:ImageView = findViewById(R.id.imgBtn4)
-        val ChatBtn:ImageView = findViewById(R.id.imgBtn5)
+        val HomeBtn:ImageView = findViewById(R.id.imgBtnHome)
+        val ChatBtn :ImageView = findViewById(R.id.imgBtnChat)
+        val PostsBtn:ImageView = findViewById(R.id.imgBtnNewPost)
+        val MyPostsBtn:ImageView = findViewById(R.id.imgBtnMyPosts)
+        val ProfileBtn:ImageView = findViewById(R.id.imgBtnProfile)
 
         HomeBtn.setOnClickListener {
             supportFragmentManager.beginTransaction().apply {

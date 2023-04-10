@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/frameLayout3"
@@ -7,31 +7,106 @@
     android:layout_height="match_parent"
     tools:context=".ProfileFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:text="IM PROFILEEEEEEEEEE"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button"
-        tools:layout_editor_absoluteX="37dp"
-        tools:layout_editor_absoluteY="49dp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/userProfile"
+            android:padding="10dp"
+            android:textAlignment="center"
+            android:textSize="22sp"
+            android:textColor="@color/black"
+            android:background="@color/orange"
+            />
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="59dp"
-        tools:layout_editor_absoluteY="149dp" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="260dp"
+            android:background="@color/orange_light">
+
+            <ImageView
+                android:id="@+id/imageView_profile_dp"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_centerInParent="true"
+                app:srcCompat="@drawable/profile_pic" />
+
+            <TextView
+                android:id="@+id/textView_show_welcome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/imageView_profile_dp"
+                android:layout_centerHorizontal="true"
+                android:layout_margin="5dp"
+                android:hint="Name"
+                android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                android:textColor="@color/white" />
+
+
+        </RelativeLayout>
+
+
+        <Button
+            android:id="@+id/btnNotification"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginStart="70dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+
+            android:drawableTint="@color/white"
+            android:text="@string/Notification" />
+
+        <Button
+            android:id="@+id/btnViewProfile"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginStart="70dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/blue_200"
+            android:backgroundTint="@color/blue_200"
+            android:drawableTint="@color/white"
+            android:text="@string/ViewProfile" />
+
+        <Button
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:background="@color/blue_200"
+            android:id="@+id/btnEditProfile"
+            android:drawableTint="@color/white"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_alignParentLeft="true"
+            android:backgroundTint="@color/blue_200"
+            android:layout_marginStart="70dp"
+
+            android:text="@string/EditProfile"
+            />
+
+        <Button
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+
+            android:id="@+id/btnDeleteProfile"
+            android:drawableTint="@color/white"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_alignParentLeft="true"
+            android:backgroundTint="@color/blue_300"
+            android:layout_marginStart="70dp"
+
+            android:text="@string/deleteProfile"
+            />
+
+    </LinearLayout>
+
+
+</ScrollView>

@@ -7,61 +7,61 @@
     tools:context=".MainActivity2">
 
     <ImageView
-        android:id="@+id/imgBtn2"
+        android:id="@+id/imgBtnChat"
         android:layout_width="@dimen/menu_image_width"
         android:layout_height="@dimen/menu_image_height"
         android:layout_marginTop="2dp"
         android:layout_marginBottom="2dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/imgBtn3"
+        app:layout_constraintEnd_toStartOf="@+id/imgBtnNewPost"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/imgBtn1"
+        app:layout_constraintStart_toEndOf="@+id/imgBtnHome"
         app:layout_constraintTop_toBottomOf="@+id/divider"
-        app:srcCompat="@drawable/posts_notselected" />
+        app:srcCompat="@drawable/chat_notselected" />
 
     <ImageView
-        android:id="@+id/imgBtn1"
+        android:id="@+id/imgBtnHome"
         android:layout_width="@dimen/menu_image_width"
         android:layout_height="@dimen/menu_image_height"
         android:layout_marginTop="2dp"
         android:layout_marginBottom="2dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/imgBtn2"
+        app:layout_constraintEnd_toStartOf="@+id/imgBtnChat"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/divider"
         app:srcCompat="@drawable/home_notselected" />
 
     <ImageView
-        android:id="@+id/imgBtn3"
+        android:id="@+id/imgBtnNewPost"
         android:layout_width="@dimen/menu_image_width"
         android:layout_height="@dimen/menu_image_height"
         android:layout_marginStart="2dp"
         android:layout_marginTop="2dp"
         android:layout_marginBottom="1dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/imgBtn4"
+        app:layout_constraintEnd_toStartOf="@+id/imgBtnMyPosts"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/imgBtn2"
+        app:layout_constraintStart_toEndOf="@+id/imgBtnChat"
         app:layout_constraintTop_toBottomOf="@+id/divider"
         app:layout_constraintVertical_bias="0.333"
         app:srcCompat="@drawable/newpost_notselected" />
 
     <ImageView
-        android:id="@+id/imgBtn4"
+        android:id="@+id/imgBtnMyPosts"
         android:layout_width="@dimen/menu_image_width"
         android:layout_height="@dimen/menu_image_height"
         android:layout_marginTop="2dp"
         android:layout_marginBottom="2dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/imgBtn5"
+        app:layout_constraintEnd_toStartOf="@+id/imgBtnProfile"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/imgBtn3"
+        app:layout_constraintStart_toEndOf="@+id/imgBtnNewPost"
         app:layout_constraintTop_toBottomOf="@+id/divider"
-        app:srcCompat="@drawable/profile_noselected" />
+        app:srcCompat="@drawable/posts_notselected" />
 
     <ImageView
-        android:id="@+id/imgBtn5"
+        android:id="@+id/imgBtnProfile"
         android:layout_width="@dimen/menu_image_width"
         android:layout_height="@dimen/menu_image_height"
         android:layout_marginTop="2dp"
@@ -69,9 +69,9 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/imgBtn4"
+        app:layout_constraintStart_toEndOf="@+id/imgBtnMyPosts"
         app:layout_constraintTop_toBottomOf="@+id/divider"
-        app:srcCompat="@drawable/chat_notselected" />
+        app:srcCompat="@drawable/profile_noselected" />
 
     <View
         android:id="@+id/divider"
@@ -79,7 +79,7 @@
         android:layout_height="1dp"
         android:layout_marginEnd="2dp"
         android:background="?android:attr/listDivider"
-        app:layout_constraintBottom_toTopOf="@+id/imgBtn1"
+        app:layout_constraintBottom_toTopOf="@+id/imgBtnHome"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fragmentContainerView"
