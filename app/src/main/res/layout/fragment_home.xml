@@ -11,4 +11,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/btn_logout" />
+
+    <EditText
+        android:id="@+id/cmntInput"
+        android:layout_width="match_parent"
+        android:layout_height="58dp"
+        android:autofillHints="@string/cmntTXT"
+        android:ems="10"
+        android:hint="@string/cmntTXT"
+        android:inputType="textPersonName" />
+
+    <Button
+        android:id="@+id/cmntBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/btnCmnt" />
 </LinearLayout>

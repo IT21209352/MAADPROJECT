@@ -81,6 +81,8 @@
     <string name="WriteYourComment">Write your comments</string>
     <string name="delete">Delete</string>
     <string name="add">Add</string>
+    <string name="btnCmnt">COMMENT</string>
+    <string name="cmntTXT">Type your comment here...</string>
 
 
 </resources>
