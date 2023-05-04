@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/fragment_container"
     tools:context=".PostFragment"
     android:background="@color/white">
 
@@ -28,23 +29,23 @@
 
 
 
-           <ImageView
-               android:id="@+id/imageView3"
-               android:layout_width="200dp"
-               android:layout_height="199dp"
-               android:layout_gravity="center"
+        <ImageView
+            android:id="@+id/image_view"
+            android:layout_width="200dp"
+            android:layout_height="199dp"
+            android:layout_gravity="center"
 
-               android:layout_marginTop="15dp"
-               android:src="@drawable/new_post3" />
+            android:layout_marginTop="15dp"
+            android:src="@drawable/new_post3" />
 
 
-    </LinearLayout>
+
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardView1"
             android:layout_width="match_parent"
             android:layout_height="300dp"
 
-            android:layout_marginTop="280dp"
+            android:layout_marginTop="20dp"
             app:cardCornerRadius="8dp"
             app:cardElevation="8dp"
             app:cardUseCompatPadding="true"
@@ -61,14 +62,14 @@
                 app:boxStrokeWidthFocused="0dp"
                 app:hintEnabled="false">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/emailEt"
+                <EditText
+                    android:id="@+id/post_detail_text_view"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@color/white"
                     android:gravity="start"
                     android:hint="@string/newPostHint"
-                    android:inputType="textEmailAddress"
+                    android:inputType="text"
                     android:paddingStart="12dp"
                     android:paddingTop="15dp"
                     android:textColor="@color/black"
@@ -79,15 +80,16 @@
 
         </com.google.android.material.card.MaterialCardView>
 
-    <Button
-        android:id="@+id/button_post"
-        android:layout_width="@dimen/width_inputbutton"
-        android:layout_height="@dimen/height_inputbutton"
-        android:layout_gravity="center"
-        android:layout_marginTop="300dp"
-        android:width="@dimen/width_inputbutton"
-        android:gravity="center|center_horizontal|center_vertical"
-        android:text="@string/btn_post"
-        android:textSize="@dimen/button_textSize" />
+        <Button
+            android:id="@+id/postButton"
+            android:layout_width="@dimen/width_inputbutton"
+            android:layout_height="@dimen/height_inputbutton"
+            android:layout_gravity="center"
 
+            android:width="@dimen/width_inputbutton"
+            android:gravity="center|center_horizontal|center_vertical"
+            android:text="@string/btn_post"
+            android:textSize="@dimen/button_textSize" />
+
+    </LinearLayout>
 </FrameLayout>
