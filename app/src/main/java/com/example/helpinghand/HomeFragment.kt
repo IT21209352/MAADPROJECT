@@ -14,9 +14,11 @@ import androidx.fragment.app.Fragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.*
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
+
 
 class HomeFragment : Fragment() {
 
@@ -24,6 +26,7 @@ class HomeFragment : Fragment() {
     private lateinit var db: FirebaseFirestore
     private var textCollectionRef: CollectionReference? = null
     private lateinit var user: FirebaseUser
+    private lateinit var firebaseDatabase: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,28 +63,55 @@ class HomeFragment : Fragment() {
             val texts: String = cmntInput.getText().toString()
             db = FirebaseFirestore.getInstance();
             textCollectionRef = db!!.collection("comments")
-
             val user =  auth.currentUser?.email.toString()
 
-            Toast.makeText(activity, user, Toast.LENGTH_SHORT).show()
+            if(texts!=""){
+                val textMap = hashMapOf(
+                    "comments-comment" to texts,
+                    "comments-owner" to user
 
-            val textMap = hashMapOf(
-                "comments-comment" to texts,
-                "comments-owner" to user
+                )
+                textCollectionRef!!
+                    .add(textMap)
 
-            )
-            textCollectionRef!!
-                .add(textMap)
+                    .addOnSuccessListener { documentReference ->
+                        Toast.makeText(activity, "Comment has been saved...", Toast.LENGTH_SHORT).show()
+                        Log.d(TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
+                        cmntInput.setText("")
+                    }
+                    .addOnFailureListener { e ->
+                        Toast.makeText(activity, "Error Occurred", Toast.LENGTH_SHORT).show()
+                        Log.w(TAG, "Error adding document", e)
+                    }
 
-                .addOnSuccessListener { documentReference ->
-                    Toast.makeText(activity, "Comment has been saved...", Toast.LENGTH_SHORT).show()
-                    Log.d(TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
-                    cmntInput.setText("")
-                }
-                .addOnFailureListener { e ->
-                    Toast.makeText(activity, "Error Occurred", Toast.LENGTH_SHORT).show()
-                    Log.w(TAG, "Error adding document", e)
-                }
+            }else{
+                Toast.makeText(activity, "Please enter a comment...", Toast.LENGTH_SHORT).show()
+            }
+
+            if (texts !=""){
+
+                val textMap = hashMapOf(
+                    "comments-comment" to texts,
+                    "comments-owner" to user
+
+                )
+
+                firebaseDatabase = FirebaseDatabase.getInstance("https://maad-bb9db-default-rtdb.asia-southeast1.firebasedatabase.app").getReference("comments")
+
+                firebaseDatabase.child("post_comments").push()
+                    .setValue(textMap)
+                    .addOnSuccessListener {
+                        Toast.makeText(activity, "Comment has been saved...", Toast.LENGTH_SHORT).show()
+                        Log.d(TAG, "DocumentSnapshot added ")
+                        cmntInput.setText("")
+                    }
+                    .addOnFailureListener { e ->
+                        Toast.makeText(activity, "Error Occurred", Toast.LENGTH_SHORT).show()
+                        Log.w(TAG, "Error adding document", e)
+                    }
+
+            }
+
         }
 
         return view
