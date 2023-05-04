@@ -70,32 +70,39 @@ class HomeFragment : Fragment() {
             textCollectionRef = db!!.collection("comments")
             val user =  auth.currentUser?.email.toString()
 
-
-            if (texts !=""){
-
+            if (texts.isNotEmpty()) {
                 val textMap = hashMapOf(
                     "comments_comment" to texts,
-                    "comments_owner" to user
-
+                    "comments_owner" to user,
+                    "comment_id" to ""
                 )
 
-                firebaseDatabase = FirebaseDatabase.getInstance("https://maad-bb9db-default-rtdb.asia-southeast1.firebasedatabase.app").getReference("comments")
-
-                firebaseDatabase.child("post_comments").push()
-                    .setValue(textMap)
-                    .addOnSuccessListener {
-                        Toast.makeText(activity, "Comment has been saved...", Toast.LENGTH_SHORT).show()
-                        Log.d(TAG, "DocumentSnapshot added ")
-                        cmntInput.setText("")
-                    }
-                    .addOnFailureListener { e ->
-                        Toast.makeText(activity, "Error Occurred", Toast.LENGTH_SHORT).show()
-                        Log.w(TAG, "Error adding document", e)
-                    }
-
+                val firebaseDatabase = FirebaseDatabase.getInstance("https://maad-bb9db-default-rtdb.asia-southeast1.firebasedatabase.app")
+                    .getReference("comments")
+                val commentID = firebaseDatabase.child("post_comments").push().key
+                Log.d(TAG, "DocumentSnapshot added with ID: $commentID")
+                if (commentID != null) {
+                    firebaseDatabase.child("post_comments").child(commentID)
+                        .setValue(textMap)
+                        .addOnSuccessListener {
+                            Toast.makeText(activity, "Comment has been saved...", Toast.LENGTH_SHORT).show()
+                            Log.d(TAG, "DocumentSnapshot added with ID: $commentID")
+                            val textMap2 = hashMapOf(
+                                "comments_comment" to texts,
+                                "comments_owner" to user,
+                                "comment_id" to commentID
+                            )
+                            firebaseDatabase.child("post_comments").child(commentID).setValue(textMap2)
+                            cmntInput.setText("")
+                        }
+                        .addOnFailureListener { e ->
+                            Toast.makeText(activity, "Error Occurred", Toast.LENGTH_SHORT).show()
+                            Log.w(TAG, "Error adding document", e)
+                        }
+                }
             }
-
         }
+
 
         firebaseDatabase = FirebaseDatabase.getInstance("https://maad-bb9db-default-rtdb.asia-southeast1.firebasedatabase.app").getReference("comments")
         firebaseDatabase.child("post_comments").addValueEventListener(object : ValueEventListener {
@@ -105,11 +112,18 @@ class HomeFragment : Fragment() {
 
                 // Iterate over the snapshot children and add each comment to the ViewModel
                 for (postSnapshot in snapshot.children) {
+                    Log.w(TAG, "comment key is ${postSnapshot.key}")
                     val comment = postSnapshot.getValue(Comment::class.java)
+
                     if (comment != null) {
-                        Log.w(TAG, "comment is ${comment}")
-                        Log.w(TAG, "comment id is ${comment}")
+                        if (comment.comment_id ==""){
+//                            val textMap = hashMapOf(
+//                                "comment_id" to postSnapshot.key
+//                            )
+//                            firebaseDatabase.setValue(textMap)
+                        }
                     }
+
                 }
 
             }
@@ -118,7 +132,6 @@ class HomeFragment : Fragment() {
                 Log.w(TAG, "Failed to read value.", error.toException())
             }
         })
-
 
         return view
     }
