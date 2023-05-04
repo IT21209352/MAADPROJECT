@@ -86,6 +86,7 @@
     <string name="hintcmnt">Comments will show here...</string>
     <string name="cmntownername">Commenter will show here</string>
     <string name="shwcmnt">Comment will show here</string>
+    <string name="deletetxt">Delete</string>
 
 
 </resources>

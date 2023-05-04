@@ -7,9 +7,9 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="342dp"
-        android:layout_height="wrap_content"
+        android:layout_height="110dp"
         android:layout_gravity="center"
-        android:layout_marginVertical="6dp"
+        android:layout_marginVertical="3dp"
         android:layout_marginStart="10dp"
         app:cardBackgroundColor="@color/purple_200"
         app:cardCornerRadius="8dp"
@@ -22,20 +22,28 @@
             android:gravity="center|left"
             android:hint="@string/cmntownername"
             android:paddingLeft="10dp"
-            android:textColor="@color/black"
-            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:textSize="15sp"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/display_the_commnet"
             android:layout_width="match_parent"
             android:layout_height="44dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="40dp"
             android:gravity="center"
             android:hint="@string/shwcmnt"
             android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/cmntDeleteBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginEnd="10dp"
+            android:text="@string/deletetxt" />
 
     </androidx.cardview.widget.CardView>
 </LinearLayout>

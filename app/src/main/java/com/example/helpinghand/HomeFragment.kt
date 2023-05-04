@@ -108,6 +108,7 @@ class HomeFragment : Fragment() {
                     val comment = postSnapshot.getValue(Comment::class.java)
                     if (comment != null) {
                         Log.w(TAG, "comment is ${comment}")
+                        Log.w(TAG, "comment id is ${comment}")
                     }
                 }
 
