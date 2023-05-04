@@ -1,5 +1,5 @@
 package com.example.helpinghand.adapters
-
+import android.app.Activity
 import android.content.ContentValues.TAG
 import android.util.Log
 import android.view.LayoutInflater
@@ -7,12 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.helpinghand.Models.Comment
 import com.example.helpinghand.R
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.FirebaseDatabase
-
-
+import com.google.firebase.ktx.Firebase
 
 class CommentAdapter : RecyclerView.Adapter<CommentAdapter.MyViewHolder>() {
 
@@ -22,7 +24,6 @@ class CommentAdapter : RecyclerView.Adapter<CommentAdapter.MyViewHolder>() {
         val itemView = LayoutInflater.from(parent.context).inflate(
             R.layout.acomment_layout,
             parent,false,
-
         )
         return MyViewHolder(itemView)
     }
@@ -36,8 +37,8 @@ class CommentAdapter : RecyclerView.Adapter<CommentAdapter.MyViewHolder>() {
 
         holder.displayCommentOwner.text = currentitem.comments_owner
         holder.displayTheComment.text = currentitem.comments_comment
-
-        holder.bind(currentitem)
+        val activity = holder.itemView.context as Activity
+        holder.bind(currentitem,activity)
     }
 
     fun  updateCommentList(commentList : List<Comment>){
@@ -51,12 +52,20 @@ class CommentAdapter : RecyclerView.Adapter<CommentAdapter.MyViewHolder>() {
         val displayCommentOwner : TextView = itemView.findViewById<TextView>(R.id.display_comment_ownner)
         val displayTheComment : TextView = itemView.findViewById<TextView>(R.id.display_the_commnet)
 
-        fun bind(comment: Comment) {
-            cmntDeleteButton.setOnClickListener {
+        fun bind(comment: Comment,activity: Activity) {
+            var auth: FirebaseAuth = Firebase.auth
+            val crntUserEmail = auth.currentUser?.email.toString()
 
-                Log.d(TAG, "This is the comment to be deleted $comment")
-                if (comment != null) {
+            cmntDeleteButton.setOnClickListener {
+                if (comment.comments_owner == crntUserEmail){
+
+                    Log.d(TAG, "This is the comment to be deleted $comment")
                     deleteComment(comment)
+
+                }else{
+
+                    Log.d(TAG, "Owner validation failed")
+                    Toast.makeText(activity , "You can not delete others comments...", Toast.LENGTH_SHORT).show()
                 }
             }
         }
