@@ -24,44 +24,44 @@
 
 
 
-            <TextView
-                android:id="@+id/post_detail"
-                android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/post_detail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:textStyle="normal|italic"
+            tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit."/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="16dp">
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:padding="16dp"
-                android:textColor="@color/black"
-                android:textSize="20dp"
-                android:textStyle="normal|italic"
-                tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit."/>
+                android:layout_weight="1"
+                android:text="EDIT"
+                android:textColor="@color/white"
+                android:background="#FF4081"/>
 
-            <LinearLayout
-                android:layout_width="match_parent"
+            <View
+                android:layout_width="8dp"
+                android:layout_height="0dp"/>
+
+            <Button
+                android:id="@+id/button3"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="16dp">
-
-                <Button
-                    android:id="@+id/button2"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="EDIT"
-                    android:textColor="@color/white"
-                    android:background="#FF4081"/>
-
-                <View
-                    android:layout_width="8dp"
-                    android:layout_height="0dp"/>
-
-                <Button
-                    android:id="@+id/button3"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="DELETE"
-                    android:textColor="@color/white"
-                    android:background="#D81B60"/>
-            </LinearLayout>
+                android:layout_weight="1"
+                android:text="DELETE"
+                android:textColor="@color/white"
+                android:background="#D81B60"/>
+        </LinearLayout>
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

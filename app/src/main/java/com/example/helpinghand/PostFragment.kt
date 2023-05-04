@@ -58,7 +58,7 @@ class PostFragment : Fragment() {
 
         storageReference = FirebaseStorage.getInstance().getReference("images")
         firebaseAuth = FirebaseAuth.getInstance()
-        firebaseDatabase = FirebaseDatabase.getInstance().getReference("users")
+        firebaseDatabase = FirebaseDatabase.getInstance("https://maad-bb9db-default-rtdb.asia-southeast1.firebasedatabase.app").getReference("users")
 
         binding.imageView.setOnClickListener {
             openGallery()
@@ -77,7 +77,7 @@ class PostFragment : Fragment() {
 
     private fun uploadPost() {
         val postDetail = binding.postDetailTextView.text.toString()
-        val userId = firebaseAuth.currentUser?.uid
+        val userId = firebaseAuth.currentUser?.email?.replace(".", ",")   /* */
 
         if (userId != null && imageUri != null && postDetail.isNotEmpty()) {
             val imageRef = storageReference.child("${System.currentTimeMillis()}.jpg")
@@ -92,7 +92,7 @@ class PostFragment : Fragment() {
                         firebaseDatabase.child("posts").child(postId!!) // Use the push key as child node's key
                             .setValue(post)
                             .addOnSuccessListener {
-                                firebaseDatabase.child("users").child(userId).child("posts")
+                                firebaseDatabase.child("users").child(userId!!).child("posts")
                                     .child(postId).setValue(true)
                                     .addOnSuccessListener {
                                         Toast.makeText(
@@ -100,6 +100,13 @@ class PostFragment : Fragment() {
                                             "Post uploaded successfully",
                                             Toast.LENGTH_SHORT
                                         ).show()
+
+                                        val myPostsFragment = myPostsFragment()
+                                        val transaction = requireActivity().supportFragmentManager.beginTransaction()
+                                        transaction.replace(R.id.fragment_container, myPostsFragment)
+                                        transaction.addToBackStack(null)
+                                        transaction.commit()
+
                                     }
                                     .addOnFailureListener { e ->
                                         Toast.makeText(
