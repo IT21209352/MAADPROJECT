@@ -1,7 +1,9 @@
 package com.example.helpinghand
 
+import android.content.ContentValues
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +13,7 @@ import androidx.navigation.Navigation
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.ktx.Firebase
 
 class LoginFragment : Fragment() {
@@ -26,7 +29,6 @@ class LoginFragment : Fragment() {
         // Inflate the layout for this fragment
          return inflater.inflate(R.layout.fragment_login, container, false)
     }
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
@@ -64,13 +66,30 @@ class LoginFragment : Fragment() {
                     .addOnCompleteListener{ task ->
                         if (task.isSuccessful) {
                             // Sign in success, update UI with the signed-in user's information
-                            val user = auth.currentUser
+
+                            val userID = currentUser?.uid
+                            val userMail =  auth.currentUser?.email.toString()
+
+                            Log.d(ContentValues.TAG, "user id is $userID")
+
+                            val userMap = hashMapOf(
+                                "user_id" to userID,
+                                "user_email" to userMail
+                            )
+
+                            val firebaseDatabase = FirebaseDatabase.getInstance("https://maad-bb9db-default-rtdb.asia-southeast1.firebasedatabase.app")
+                                .getReference("logged_users")
+
+                            val newRef = firebaseDatabase.push()
+                            newRef.setValue(userMap)
+
                             Toast.makeText(activity, "Login Successful", Toast.LENGTH_SHORT).show()
                             activity?.let {
                                 val intent = Intent(it,MainActivity2::class.java)
                                 it.startActivity(intent)
                             }
                             progressBar.visibility = View.GONE
+
                         } else {
                             // If sign in fails, display a message to the user.
                             Toast.makeText(activity, "Authentication failed.",
