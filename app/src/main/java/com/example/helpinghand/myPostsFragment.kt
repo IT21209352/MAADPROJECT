@@ -15,7 +15,9 @@ import com.example.helpinghand.adapters.PostAdapter
 import com.example.helpinghand.databinding.FragmentMyPostsBinding
 import com.example.helpinghand.databinding.FragmentPostBinding
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.*
+import com.google.firebase.ktx.Firebase
 
 
 class myPostsFragment : Fragment() {
@@ -34,7 +36,7 @@ class myPostsFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentMyPostsBinding.inflate(inflater, container, false)
-
+        firebaseAuth = Firebase.auth
 
         firebaseAuth = FirebaseAuth.getInstance()
         firebaseDatabase = FirebaseDatabase.getInstance("https://maad-bb9db-default-rtdb.asia-southeast1.firebasedatabase.app").getReference("posts")
@@ -60,14 +62,17 @@ class myPostsFragment : Fragment() {
                     override fun onDataChange(snapshot: DataSnapshot) {
                         postList.clear()
                         for (postSnapshot in snapshot.children) {
-                            //Log.d(ContentValues.TAG, "----------------1111111111111111111111111111------------------this is the post $postSnapshot")
                             val postId = postSnapshot.key.toString()
                             val post = postSnapshot.getValue(Post::class.java)
 
+                         //   Log.d(ContentValues.TAG, "-----------------------------------this is post id $pos")
+                        //    Log.d(ContentValues.TAG, "DocumentSnapshot added with ID: $commentID")
+
                             if (post != null) {
-                             //   Log.d(ContentValues.TAG, "----------------222222222222222222222------------------this is the post $post")
-                                postList.add(post)
-                                postAdapter.notifyDataSetChanged()
+                                if (post.post_owner==userId){
+                                    postList.add(post)
+                                    postAdapter.notifyDataSetChanged()
+                                }
                             }
 
                         }

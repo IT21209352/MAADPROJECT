@@ -52,14 +52,11 @@ class HomeFragment : Fragment() {
         val cmntBtn= view.findViewById<Button>(R.id.cmntBtn)
 
         logoutBtn.setOnClickListener {
-
             Firebase.auth.signOut()
-
             activity?.let {
                 val intent = Intent(it,MainActivity::class.java)
                 it.startActivity(intent)
             }
-
         }
 
         cmntBtn.setOnClickListener {

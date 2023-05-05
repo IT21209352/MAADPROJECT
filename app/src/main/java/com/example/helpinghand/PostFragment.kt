@@ -75,7 +75,7 @@ class PostFragment : Fragment() {
 
     private fun uploadPost() {
         val postDetail = binding.postDetailTextView.text.toString()
-        val userId = firebaseAuth.currentUser?.email?.replace(".", ",")   /* */
+        val userId = firebaseAuth.currentUser?.email  /* */
 
         if (userId != null && imageUri != null && postDetail.isNotEmpty()) {
             val imageRef = storageReference.child("${System.currentTimeMillis()}.jpg")
