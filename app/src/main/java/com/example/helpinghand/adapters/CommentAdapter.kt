@@ -53,6 +53,7 @@ class CommentAdapter : RecyclerView.Adapter<CommentAdapter.MyViewHolder>() {
         val displayTheComment : TextView = itemView.findViewById<TextView>(R.id.display_the_commnet)
 
         fun bind(comment: Comment,activity: Activity) {
+
             var auth: FirebaseAuth = Firebase.auth
             val crntUserEmail = auth.currentUser?.email.toString()
 
@@ -70,7 +71,7 @@ class CommentAdapter : RecyclerView.Adapter<CommentAdapter.MyViewHolder>() {
             }
         }
 
-        private fun deleteComment(comment: Comment) {
+       private fun deleteComment(comment: Comment) {
             val theID = comment.comment_id
             val firebaseDatabase = FirebaseDatabase.getInstance("https://maad-bb9db-default-rtdb.asia-southeast1.firebasedatabase.app")
             val commentRef =
