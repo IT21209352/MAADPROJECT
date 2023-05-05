@@ -56,7 +56,7 @@ class PostFragment : Fragment() {
 
         storageReference = FirebaseStorage.getInstance().getReference("images")
         firebaseAuth = FirebaseAuth.getInstance()
-        firebaseDatabase = FirebaseDatabase.getInstance("https://maad-bb9db-default-rtdb.asia-southeast1.firebasedatabase.app").getReference("users")
+        firebaseDatabase = FirebaseDatabase.getInstance("https://maad-bb9db-default-rtdb.asia-southeast1.firebasedatabase.app").getReference("posts")
 
         binding.imageView.setOnClickListener {
             openGallery()
@@ -82,45 +82,31 @@ class PostFragment : Fragment() {
             imageRef.putFile(imageUri!!)
                 .addOnSuccessListener { taskSnapshot ->
                     imageRef.downloadUrl.addOnSuccessListener { uri ->
-                        val postId = firebaseDatabase.child("posts").push().key // Generate new push key
+                        val postId = firebaseDatabase.push().key // Generate new push key
+
                         val post = hashMapOf(
                             "postDetail" to postDetail,
-                            "imageUrl" to uri.toString()
+                            "imageUrl" to uri.toString(),
+                            "post_owner" to userId,
+                            "post_key" to postId
                         )
-                        firebaseDatabase.child("posts").child(postId!!) // Use the push key as child node's key
+                        firebaseDatabase.child(postId!!) // Use the push key as child node's key
                             .setValue(post)
                             .addOnSuccessListener {
-                                firebaseDatabase.child("users").child(userId!!).child("posts")
-                                    .child(postId).setValue(true)
-                                    .addOnSuccessListener {
-                                        Toast.makeText(
-                                            requireContext(),
-                                            "Post uploaded successfully",
-                                            Toast.LENGTH_SHORT
-                                        ).show()
 
-                                        val myPostsFragment = myPostsFragment()
-                                        val transaction = requireActivity().supportFragmentManager.beginTransaction()
-                                        transaction.replace(R.id.fragment_container, myPostsFragment)
-                                        transaction.addToBackStack(null)
-                                        transaction.commit()
-
-                                    }
-                                    .addOnFailureListener { e ->
-                                        Toast.makeText(
-                                            requireContext(),
-                                            "Error uploading post: ${e.message}",
-                                            Toast.LENGTH_SHORT
-                                        ).show()
-                                    }
-                            }
-                            .addOnFailureListener { e ->
                                 Toast.makeText(
                                     requireContext(),
-                                    "Error uploading post: ${e.message}",
+                                    "Post uploaded successfully",
                                     Toast.LENGTH_SHORT
                                 ).show()
+
+                                val myPostsFragment = myPostsFragment()
+                                val transaction = requireActivity().supportFragmentManager.beginTransaction()
+                                transaction.replace(R.id.fragment_container, myPostsFragment)
+                                transaction.addToBackStack(null)
+                                transaction.commit()
                             }
+
                     }
                 }
                 .addOnFailureListener { e ->

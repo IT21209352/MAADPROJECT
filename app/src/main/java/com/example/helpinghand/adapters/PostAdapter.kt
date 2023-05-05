@@ -37,25 +37,30 @@ class PostAdapter(private val posts: MutableList<Post> ) : RecyclerView.Adapter<
         holder.postDetail.text = post.postDetail
 
         holder.deleteButton.setOnClickListener {
-            FirebaseDatabase.getInstance("https://maad-bb9db-default-rtdb.asia-southeast1.firebasedatabase.app").getReference("posts").child(post.postId).removeValue()
-                .addOnSuccessListener {
-                    // Remove the post from the postList and update the adapter
-                    posts.remove(post)
-                    notifyDataSetChanged()
+            post.post_key?.let { it1 ->
+                FirebaseDatabase.getInstance("https://maad-bb9db-default-rtdb.asia-southeast1.firebasedatabase.app").getReference("posts").child(
+                    it1
+                )
+                    .removeValue()
+                    .addOnSuccessListener {
+                        // Remove the post from the postList and update the adapter
+                        posts.remove(post)
+                        notifyDataSetChanged()
 
-                    Toast.makeText(
-                        holder.itemView.context,
-                        "Post deleted successfully",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
-                .addOnFailureListener { e ->
-                    Toast.makeText(
-                        holder.itemView.context,
-                        "Failed to delete post: ${e.message}",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
+                        Toast.makeText(
+                            holder.itemView.context,
+                            "Post deleted successfully",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                    .addOnFailureListener { e ->
+                        Toast.makeText(
+                            holder.itemView.context,
+                            "Failed to delete post: ${e.message}",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+            }
         }
 
     }

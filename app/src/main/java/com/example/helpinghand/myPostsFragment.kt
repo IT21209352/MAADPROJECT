@@ -1,12 +1,15 @@
 package com.example.helpinghand
 
+import android.content.ContentValues
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.helpinghand.Models.Comment
 import com.example.helpinghand.Models.Post
 import com.example.helpinghand.adapters.PostAdapter
 import com.example.helpinghand.databinding.FragmentMyPostsBinding
@@ -34,7 +37,7 @@ class myPostsFragment : Fragment() {
 
 
         firebaseAuth = FirebaseAuth.getInstance()
-        firebaseDatabase = FirebaseDatabase.getInstance("https://maad-bb9db-default-rtdb.asia-southeast1.firebasedatabase.app").getReference("users")
+        firebaseDatabase = FirebaseDatabase.getInstance("https://maad-bb9db-default-rtdb.asia-southeast1.firebasedatabase.app").getReference("posts")
 
         postAdapter = PostAdapter(postList)
 
@@ -45,38 +48,28 @@ class myPostsFragment : Fragment() {
 
         loadMyPosts()
 
-
         return binding.root
     }
 
     private fun loadMyPosts() {
-        val userId = firebaseAuth.currentUser?.email?.replace(".", ",")   /* */
+        val userId = firebaseAuth.currentUser?.email; /* */
 
         if (userId != null) {
-            firebaseDatabase.child("users").child(userId).child("posts")
+            firebaseDatabase
                 .addListenerForSingleValueEvent(object : ValueEventListener {
                     override fun onDataChange(snapshot: DataSnapshot) {
                         postList.clear()
                         for (postSnapshot in snapshot.children) {
+                            //Log.d(ContentValues.TAG, "----------------1111111111111111111111111111------------------this is the post $postSnapshot")
                             val postId = postSnapshot.key.toString()
-                            firebaseDatabase.child("posts").child(postId)
-                                .addListenerForSingleValueEvent(object : ValueEventListener {
-                                    override fun onDataChange(snapshot: DataSnapshot) {
-                                        val post = snapshot.getValue(Post::class.java)
-                                        if (post != null) {
-                                            postList.add(post)
-                                            postAdapter.notifyDataSetChanged()
-                                        }
-                                    }
+                            val post = postSnapshot.getValue(Post::class.java)
 
-                                    override fun onCancelled(error: DatabaseError) {
-                                        Toast.makeText(
-                                            requireContext(),
-                                            "Failed to load post: ${error.message}",
-                                            Toast.LENGTH_SHORT
-                                        ).show()
-                                    }
-                                })
+                            if (post != null) {
+                             //   Log.d(ContentValues.TAG, "----------------222222222222222222222------------------this is the post $post")
+                                postList.add(post)
+                                postAdapter.notifyDataSetChanged()
+                            }
+
                         }
                     }
 
