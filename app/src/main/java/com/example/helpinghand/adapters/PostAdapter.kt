@@ -1,5 +1,6 @@
 package com.example.helpinghand.adapters
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -37,8 +38,11 @@ class PostAdapter(private val posts: MutableList<Post> ) : RecyclerView.Adapter<
         holder.postDetail.text = post.postDetail
 
         holder.deleteButton.setOnClickListener {
-            FirebaseDatabase.getInstance("https://maad-bb9db-default-rtdb.asia-southeast1.firebasedatabase.app").getReference("posts").child(post.postId).removeValue()
-                .addOnSuccessListener {
+            val postId = post.postId
+            val databaseReference = FirebaseDatabase.getInstance("https://maad-bb9db-default-rtdb.asia-southeast1.firebasedatabase.app").getReference("posts").child(postId)
+
+            databaseReference.removeValue().addOnCompleteListener { task ->
+                if (task.isSuccessful) {
                     // Remove the post from the postList and update the adapter
                     posts.remove(post)
                     notifyDataSetChanged()
@@ -48,20 +52,20 @@ class PostAdapter(private val posts: MutableList<Post> ) : RecyclerView.Adapter<
                         "Post deleted successfully",
                         Toast.LENGTH_SHORT
                     ).show()
-                }
-                .addOnFailureListener { e ->
+                } else {
                     Toast.makeText(
                         holder.itemView.context,
-                        "Failed to delete post: ${e.message}",
+                        "Failed to delete post: ${task.exception?.message}",
                         Toast.LENGTH_SHORT
                     ).show()
+
+
                 }
+            }
         }
 
 
-
-
-       }
+    }
 
 
 

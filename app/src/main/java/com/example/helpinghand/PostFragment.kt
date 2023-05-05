@@ -42,6 +42,7 @@ class PostFragment : Fragment() {
     private lateinit var firebaseDatabase: DatabaseReference
     private var imageUri: Uri? = null
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
