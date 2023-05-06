@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -57,18 +58,8 @@ class HomeFragment : Fragment() {
 
         val view = inflater.inflate(R.layout.fragment_home, container, false)
         auth = Firebase.auth
-        val logoutBtn = view.findViewById<Button>(R.id.main_logout_btn)
+
         val cmntBtn= view.findViewById<Button>(R.id.cmntBtn)
-
-
-
-        logoutBtn.setOnClickListener {
-            Firebase.auth.signOut()
-            activity?.let {
-                val intent = Intent(it,MainActivity::class.java)
-                it.startActivity(intent)
-            }
-        }
 
         dataLoaders()
 
@@ -187,6 +178,12 @@ class HomeFragment : Fragment() {
         viewModel.allComments.observe(viewLifecycleOwner, Observer {
             adapter.updateCommentList(it)
         })
+
+        //data passing
+        val commentText = arguments?.getString("postOwner") ?: ""
+        val commentTextView = view.findViewById<EditText>(R.id.cmntInput)
+        commentTextView.setText(commentText)
+        commentTextView.setSelection(commentTextView.text.length)
 
     }
 }

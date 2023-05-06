@@ -106,6 +106,15 @@
             android:text="@string/deleteProfile"
             />
 
+        <Button
+            android:id="@+id/main_logout_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_logout"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+
     </LinearLayout>
 
 

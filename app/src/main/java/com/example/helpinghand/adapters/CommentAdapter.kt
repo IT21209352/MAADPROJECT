@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.cardview.widget.CardView
@@ -59,7 +60,9 @@ class CommentAdapter : RecyclerView.Adapter<CommentAdapter.MyViewHolder>() {
         val displayCommentOwner : TextView = itemView.findViewById<TextView>(R.id.display_comment_ownner)
         val displayTheComment : TextView = itemView.findViewById<TextView>(R.id.display_the_commnet)
         val cmntCArdView : CardView = itemView.findViewById(R.id.cmntCardView)
-
+        val editBtn: Button = itemView.findViewById(R.id.saveUpdatedCmntBtn)
+        val cmntLikeBtn : Button = itemView.findViewById(R.id.CmntlikeBtn)
+        val updtCmntInput : EditText = itemView.findViewById(R.id.updateCommentInput)
         fun bind(comment: Comment,activity: Activity) {
 
             var auth: FirebaseAuth = Firebase.auth
@@ -67,7 +70,12 @@ class CommentAdapter : RecyclerView.Adapter<CommentAdapter.MyViewHolder>() {
 
             if (comment.comments_owner != crntUserEmail){
                 cmntDeleteButton.visibility = View.INVISIBLE
+                editBtn.visibility = View.INVISIBLE
+                cmntLikeBtn.visibility = View.VISIBLE
+                updtCmntInput.visibility = View.INVISIBLE
                 Log.d(TAG, "This is the comment to be deleted $comment")
+            }else{
+                cmntLikeBtn.visibility = View.INVISIBLE
             }
 
 
@@ -83,7 +91,33 @@ class CommentAdapter : RecyclerView.Adapter<CommentAdapter.MyViewHolder>() {
                     Toast.makeText(activity , "You can not delete others comments...", Toast.LENGTH_SHORT).show()
                 }
             }
+
+            editBtn.setOnClickListener {
+                val updtText = updtCmntInput.text.toString()
+
+                if (updtText!=null && updtText !=""){
+                    val textMap2 = hashMapOf(
+                        "comments_comment" to  updtText,
+                        "comments_owner" to comment.comments_owner,
+                        "comment_id" to comment.comment_id
+                    )
+                    val firebaseDatabase = comment.comment_id?.let { it1 ->
+                        FirebaseDatabase
+                            .getInstance("https://maad-bb9db-default-rtdb.asia-southeast1.firebasedatabase.app")
+                            .getReference("comments").child("post_comments")
+                            .child(it1).setValue(textMap2)
+                    }
+                    updtCmntInput.text.clear()
+                    Toast.makeText(activity , "Comment updated...", Toast.LENGTH_SHORT).show()
+
+                }else{
+                    Toast.makeText(activity , "You must enter something to update...", Toast.LENGTH_SHORT).show()
+                }
+            }
         }
+
+
+
 
        private fun deleteComment(comment: Comment) {
             val theID = comment.comment_id

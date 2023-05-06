@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.manager.SupportRequestManagerFragment
 import com.example.helpinghand.Models.Post
 import com.example.helpinghand.adapters.AllPostsAdaptor
 import com.example.helpinghand.databinding.FragmentAllPostsFragmantBinding
@@ -37,7 +38,7 @@ class AllPostsFragmant : Fragment() {
             FirebaseDatabase.getInstance("https://maad-bb9db-default-rtdb.asia-southeast1.firebasedatabase.app")
                 .getReference("posts")
         val rcView = view?.findViewById<RecyclerView>(R.id.allPostsRecyclerView)
-        postAdapter = AllPostsAdaptor(postList)
+        postAdapter = AllPostsAdaptor(postList,requireActivity().supportFragmentManager)
         binding.allPostsRecyclerView.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = postAdapter

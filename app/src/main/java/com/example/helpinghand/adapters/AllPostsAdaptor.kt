@@ -2,6 +2,7 @@ package com.example.helpinghand.adapters
 
 import android.content.ContentValues
 import android.graphics.Color
+import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -10,12 +11,18 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
+import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.helpinghand.HomeFragment
 import com.example.helpinghand.Models.Post
 import com.example.helpinghand.R
+import com.example.helpinghand.myPostsFragment
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
-class AllPostsAdaptor(private val posts: MutableList<Post> ) : RecyclerView.Adapter<AllPostsAdaptor.ViewHolder>() {
+class AllPostsAdaptor(private val posts: MutableList<Post>, private val fragmentManager: FragmentManager ) : RecyclerView.Adapter<AllPostsAdaptor.ViewHolder>() {
     private val colors = arrayOf("#FFCDD2", "#F8BBD0", "#E1BEE7", "#D1C4E9", "#C5CAE9", "#BBDEFB", "#B3E5FC", "#B2EBF2", "#B2DFDB", "#C8E6C9")
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -33,8 +40,11 @@ class AllPostsAdaptor(private val posts: MutableList<Post> ) : RecyclerView.Adap
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        var auth: FirebaseAuth = Firebase.auth
         val post = posts[position]
         val color = colors[position % colors.size]
+        val crntUserEmail = auth.currentUser?.email.toString()
+
         holder.postCardView.setBackgroundColor(Color.parseColor(color))
 
         // Load the image using Glide or Picasso library
@@ -44,8 +54,27 @@ class AllPostsAdaptor(private val posts: MutableList<Post> ) : RecyclerView.Adap
 
         holder.postDetail.text = post.postDetail
 
+        if (post.post_owner == crntUserEmail){
+           holder.cmntBtn.visibility = View.INVISIBLE
+        }
+
+        if (post.post_owner == crntUserEmail){
+            holder.helpbtn.visibility = View.INVISIBLE
+        }
+
         holder.cmntBtn.setOnClickListener {
-            Log.d(ContentValues.TAG, "this is the related comment $post")
+            Log.d(ContentValues.TAG, "this is the related comment ${post.post_owner}")
+
+            val postOwner = "Hi, ${post.post_owner} I can help you regarding your post ${post.postDetail}"
+            val homeFragment = HomeFragment()
+            val bundle = Bundle()
+            bundle.putString("postOwner", postOwner)
+            homeFragment.arguments = bundle
+
+            val transaction = fragmentManager.beginTransaction()
+            transaction.replace(R.id.fragmentContainerView, homeFragment)
+            transaction.addToBackStack(null)
+            transaction.commit()
 
         }
 
