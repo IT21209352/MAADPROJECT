@@ -65,6 +65,12 @@ class CommentAdapter : RecyclerView.Adapter<CommentAdapter.MyViewHolder>() {
             var auth: FirebaseAuth = Firebase.auth
             val crntUserEmail = auth.currentUser?.email.toString()
 
+            if (comment.comments_owner != crntUserEmail){
+                cmntDeleteButton.visibility = View.INVISIBLE
+                Log.d(TAG, "This is the comment to be deleted $comment")
+            }
+
+
             cmntDeleteButton.setOnClickListener {
                 if (comment.comments_owner == crntUserEmail){
 

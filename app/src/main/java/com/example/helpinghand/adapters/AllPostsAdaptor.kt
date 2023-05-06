@@ -1,6 +1,8 @@
 package com.example.helpinghand.adapters
 
+import android.content.ContentValues
 import android.graphics.Color
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -42,6 +44,11 @@ class AllPostsAdaptor(private val posts: MutableList<Post> ) : RecyclerView.Adap
 
         holder.postDetail.text = post.postDetail
 
+        holder.cmntBtn.setOnClickListener {
+            Log.d(ContentValues.TAG, "this is the related comment $post")
+
+        }
+
         holder.helpbtn.setOnClickListener {
 //            post.post_key?.let { it1 ->
 //                FirebaseDatabase.getInstance("https://maad-bb9db-default-rtdb.asia-southeast1.firebasedatabase.app").getReference("posts").child(
@@ -68,7 +75,6 @@ class AllPostsAdaptor(private val posts: MutableList<Post> ) : RecyclerView.Adap
 //                    }
 //            }
         }
-
     }
 
     override fun getItemCount() = posts.size
