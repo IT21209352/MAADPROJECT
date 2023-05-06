@@ -2,34 +2,19 @@ package com.example.helpinghand
 
 import android.app.Activity
 import android.content.Intent
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
-import android.provider.MediaStore
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.activity.result.ActivityResult
-import androidx.activity.result.ActivityResultLauncher
-import androidx.activity.result.contract.ActivityResultContract
-import androidx.activity.result.contract.ActivityResultContracts
-import androidx.activity.result.registerForActivityResult
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.location.LocationRequestCompat.Quality
 import com.example.helpinghand.databinding.FragmentPostBinding
-import com.google.common.primitives.Bytes
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
-import java.io.ByteArrayOutputStream
-import java.io.InputStream
-import java.lang.ref.PhantomReference
-import java.util.Base64
 
 
 class PostFragment : Fragment() {
@@ -102,7 +87,7 @@ class PostFragment : Fragment() {
 
                                 val myPostsFragment = myPostsFragment()
                                 val transaction = requireActivity().supportFragmentManager.beginTransaction()
-                                transaction.replace(R.id.fragment_container, myPostsFragment)
+                                transaction.replace(R.id.fragment_container_1, myPostsFragment)
                                 transaction.addToBackStack(null)
                                 transaction.commit()
                             }

@@ -10,14 +10,10 @@ class MainActivity2 : AppCompatActivity() {
         setContentView(R.layout.activity_main2)
 
         val fragmentName = intent.getStringExtra("fragment_to_load")
-//        if (savedInstanceState == null) { // check if it's the first time loading the activity
-//            supportFragmentManager.beginTransaction()
-//                .replace(R.id.fragment_container,AllPostsFragmant())
-//                .commit()
-//        }
+
         if (fragmentName == "AllPostsFragment") {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.fragment_container, AllPostsFragmant())
+                .replace(R.id.fragment_container_1, AllPostsFragmant())
                 .commit()
         }
 
@@ -36,7 +32,7 @@ class MainActivity2 : AppCompatActivity() {
 
         ProfileBtn.setOnClickListener {
             supportFragmentManager.beginTransaction().apply {
-                replace(R.id.fragmentContainerView,HomeFragment())
+                replace(R.id.fragmentContainerView,ProfileFragment())
                 commit()
             }
         }

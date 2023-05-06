@@ -80,5 +80,12 @@
     <string name="helphim">I CAN HELP</string>
     <string name="shwHere">The text will show here...</string>
     <string name="cmtn">COMMENT</string>
+    <string name="gchat">Global Chat</string>
+    <string name="dctChat">Direct Chat</string>
+    <string name="cpcmt">Type here to update</string>
+    <string name="saveCmnt">"Save "</string>
+    <string name="svmecmnt">Edit</string>
+    <string name="updateCMnt">UPDATE</string>
+    <string name="lknBtn">Like IT</string>
 
 </resources>
