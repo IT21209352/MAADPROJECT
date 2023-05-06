@@ -33,8 +33,8 @@
                 android:id="@+id/imageView_profile_dp"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
-                android:layout_centerInParent="true"
-                android:background="@drawable/use_profile" />
+                android:layout_centerInParent="true"/>
+
 
             <TextView
                 android:id="@+id/textView_show_welcome"
@@ -59,7 +59,6 @@
             android:layout_marginStart="70dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
-            android:drawableLeft="@drawable/baseline_notifications_24"
             android:drawableTint="@color/white"
             android:text="@string/Notification" />
 
@@ -73,7 +72,6 @@
             android:layout_marginBottom="10dp"
             android:background="@color/blue_200"
             android:backgroundTint="@color/blue_200"
-            android:drawableLeft="@drawable/baseline_account_circle_24"
             android:drawableTint="@color/white"
             android:text="@string/ViewProfile" />
 
@@ -88,7 +86,6 @@
             android:layout_alignParentLeft="true"
             android:backgroundTint="@color/blue_200"
             android:layout_marginStart="70dp"
-            android:drawableLeft="@drawable/baseline_mode_edit_outline_24"
             android:text="@string/EditProfile"
             />
 
@@ -103,7 +100,7 @@
             android:layout_alignParentLeft="true"
             android:backgroundTint="@color/blue_300"
             android:layout_marginStart="70dp"
-            android:drawableLeft="@drawable/baseline_delete_24"
+
             android:text="@string/deleteProfile"
             />
 
