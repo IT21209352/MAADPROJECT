@@ -7,14 +7,15 @@
     android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/postCardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginVertical="3dp"
-        android:layout_marginEnd="2dp"
         android:layout_marginStart="2dp"
         android:layout_marginTop="250dp"
-        app:cardBackgroundColor="@color/purple_200"
+        android:layout_marginEnd="2dp"
+        app:cardBackgroundColor="@color/color1"
         app:cardCornerRadius="8dp"
         app:cardElevation="10dp">
 
@@ -46,22 +47,22 @@
             android:layout_width="202dp"
             android:layout_height="wrap_content"
             android:layout_gravity="left"
+            android:layout_marginStart="2dp"
             android:layout_marginTop="250dp"
+            android:layout_marginEnd="2dp"
             android:layout_weight="1"
             android:background="#D81B60"
-            android:layout_marginEnd="2dp"
-            android:layout_marginStart="2dp"
             android:text="DELETE"
             android:textColor="@color/white" />
 
         <Button
             android:id="@+id/button2"
-            android:layout_marginEnd="2dp"
-            android:layout_marginStart="2dp"
             android:layout_width="202dp"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
+            android:layout_marginStart="2dp"
             android:layout_marginTop="250dp"
+            android:layout_marginEnd="2dp"
             android:layout_weight="1"
             android:background="#D81B60"
             android:text="EDIT"

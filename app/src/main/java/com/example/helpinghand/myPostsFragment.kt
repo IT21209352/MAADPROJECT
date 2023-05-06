@@ -37,19 +37,14 @@ class myPostsFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentMyPostsBinding.inflate(inflater, container, false)
         firebaseAuth = Firebase.auth
-
         firebaseAuth = FirebaseAuth.getInstance()
         firebaseDatabase = FirebaseDatabase.getInstance("https://maad-bb9db-default-rtdb.asia-southeast1.firebasedatabase.app").getReference("posts")
-
         postAdapter = PostAdapter(postList)
-
         binding.recyclerView.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = postAdapter
         }
-
         loadMyPosts()
-
         return binding.root
     }
 
