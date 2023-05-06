@@ -84,10 +84,18 @@ class LoginFragment : Fragment() {
                             newRef.setValue(userMap)
 
                             Toast.makeText(activity, "Login Successful", Toast.LENGTH_SHORT).show()
+//                            activity?.let {
+//                                val intent = Intent(it,MainActivity2::class.java)
+//                                it.startActivity(intent)
+//                            }
+
                             activity?.let {
-                                val intent = Intent(it,MainActivity2::class.java)
+                                val intent = Intent(it, MainActivity2::class.java)
+                                intent.putExtra("fragment_to_load", "AllPostsFragment") // pass the fragment name to MainActivity2
                                 it.startActivity(intent)
                             }
+
+
                             progressBar.visibility = View.GONE
 
                         } else {

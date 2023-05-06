@@ -6,14 +6,12 @@
     <string name="txt_passwordRetype">Retype the Password</string>
     <string name="txt_btn_register">REGISTER</string>
     <string name="txt_btn_login">LOGIN</string>
-
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="txt_enterpassword">Enter the Password</string>
     <string name="txt_btnsignup">SIGNUP</string>
     <string name="contentDescriptionLogo">This is the app logo</string>
     <string name="frogot_password">Froget your Password?</string>
     <string name="title_activity_home">HomeActivity</string>
-
     <string name="title_home2">Home</string>
     <string name="title_profile">Profile</string>
     <string name="title_post">Post</string>
@@ -23,17 +21,14 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
-
     <string name="txt_otpsend">We have sent an OTP to your registered mobile number. Please enter it below.</string>
     <string name="txt_btn_submit">SUBMIT</string>
     <string name="txt_btn_resend">RESEND</string>
     <string name="txt_hint_otp">Enter OTP here</string>
-
     <string name="txt_newPass">Please enter a new password below</string>
     <string name="txt_hint_pass">New Password</string>
     <string name="txt_hint">Re-Type the Password</string>
     <string name="txt_btn_confirm">CONFIRM</string>
-
     <string name="enter_details">Enter your details below</string>
     <string name="user_name">A User Name</string>
     <string name="user_phn_number">Mobile Phone Number</string>
@@ -43,23 +38,18 @@
     <string name="comment_hint">Write your comment here...</string>
     <string name="loadingComment_hint">Loading Comments...</string>
     <string name="posterName">Loading Authors Name...</string>
-
     <string name="title_NewPost">NEW POST</string>
     <string name="newPostHint">Write something about your post..</string>
     <string name="btn_post">POST</string>
-
     <string name="title_Post">POSTS</string>
     <string name="btn_edit">EDIT</string>
     <string name="btn_delete">DELETE</string>
-
-
     <string name="messages">Messages</string>
     <string name="search">Search</string>
     <string name="message">Type your message</string>
     <string name="deleteMsg">Delete Message</string>
     <string name="editMsg">Edit Message</string>
     <string name="deleteChat">Delete Chat</string>
-
     <string name="Name">Name</string>
     <string name="Email">Email</string>
     <string name="phone">Phone</string>
@@ -87,6 +77,8 @@
     <string name="cmntownername">Commenter will show here</string>
     <string name="shwcmnt">Comment will show here</string>
     <string name="deletetxt">Delete</string>
-
+    <string name="helphim">I CAN HELP</string>
+    <string name="shwHere">The text will show here...</string>
+    <string name="cmtn">COMMENT</string>
 
 </resources>
