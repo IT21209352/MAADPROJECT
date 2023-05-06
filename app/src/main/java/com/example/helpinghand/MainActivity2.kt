@@ -9,6 +9,18 @@ class MainActivity2 : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main2)
 
+        val fragmentName = intent.getStringExtra("fragment_to_load")
+        if (savedInstanceState == null) { // check if it's the first time loading the activity
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container,AllPostsFragmant())
+                .commit()
+        }
+        if (fragmentName == "AllPostsFragment") {
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, AllPostsFragmant())
+                .commit()
+        }
+
         val HomeBtn:ImageView = findViewById(R.id.imgBtnHome)
         val ChatBtn :ImageView = findViewById(R.id.imgBtnChat)
         val PostsBtn:ImageView = findViewById(R.id.imgBtnNewPost)
