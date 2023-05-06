@@ -87,5 +87,8 @@
     <string name="cmntownername">Commenter will show here</string>
     <string name="shwcmnt">Comment will show here</string>
     <string name="deletetxt">Delete</string>
+    <string name="helphim">I CAN HELP</string>
+    <string name="shwHere">The text will show here...</string>
+    <string name="cmtn">COMMENT</string>
 
 </resources>

@@ -24,7 +24,6 @@ class myPostsFragment : Fragment() {
 
 
     private lateinit var binding: FragmentMyPostsBinding
-
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var firebaseDatabase: DatabaseReference
     private lateinit var postAdapter: PostAdapter
@@ -40,7 +39,7 @@ class myPostsFragment : Fragment() {
         firebaseAuth = FirebaseAuth.getInstance()
         firebaseDatabase = FirebaseDatabase.getInstance("https://maad-bb9db-default-rtdb.asia-southeast1.firebasedatabase.app").getReference("posts")
         postAdapter = PostAdapter(postList)
-        binding.recyclerView.apply {
+        binding.recyclerViewP.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = postAdapter
         }

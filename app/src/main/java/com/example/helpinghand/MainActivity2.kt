@@ -17,7 +17,7 @@ class MainActivity2 : AppCompatActivity() {
 
         HomeBtn.setOnClickListener {
             supportFragmentManager.beginTransaction().apply {
-                replace(R.id.fragmentContainerView,HomeFragment())
+                replace(R.id.fragmentContainerView,AllPostsFragmant())
                 commit()
             }
         }
@@ -49,7 +49,6 @@ class MainActivity2 : AppCompatActivity() {
                 commit()
             }
         }
-
 
     }
 }

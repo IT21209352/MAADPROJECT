@@ -23,7 +23,7 @@
         <ImageView
             android:id="@+id/post_image"
             android:layout_width="match_parent"
-            android:layout_height="241dp"
+            android:layout_height="240dp"
             app:srcCompat="@drawable/post3" />
 
 
