@@ -40,8 +40,6 @@ class HomeFragment : Fragment() {
     private lateinit var commentRecyclerView : RecyclerView
     private lateinit var postRecyclerView : RecyclerView
     lateinit var adapter: CommentAdapter
-
-    //new code
     private lateinit var binding: FragmentMyPostsBinding
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var postAdapter: PostAdapter
