@@ -1,6 +1,9 @@
 package com.example.helpinghand
 
+import android.content.ContentValues.TAG
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -18,7 +21,7 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.*
 import com.google.firebase.ktx.Firebase
 
-class AllPostsFragmant : Fragment() {
+class AllPostsFragmant : Fragment(), AllPostsAdaptor.OnChatButtonClickListener {
 
     private lateinit var binding: FragmentAllPostsFragmantBinding
     private lateinit var firebaseAuth: FirebaseAuth
@@ -38,7 +41,7 @@ class AllPostsFragmant : Fragment() {
             FirebaseDatabase.getInstance("https://maad-bb9db-default-rtdb.asia-southeast1.firebasedatabase.app")
                 .getReference("posts")
         val rcView = view?.findViewById<RecyclerView>(R.id.allPostsRecyclerView)
-        postAdapter = AllPostsAdaptor(postList,requireActivity().supportFragmentManager)
+        postAdapter = AllPostsAdaptor(requireContext(), this, postList,requireActivity().supportFragmentManager)
         binding.allPostsRecyclerView.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = postAdapter
@@ -83,6 +86,56 @@ class AllPostsFragmant : Fragment() {
                         ).show()
                     }
                 })
+        }
+    }
+
+    override fun onChatButtonClick(post: Post) {
+        val currentUserId = firebaseAuth.currentUser?.uid
+        val otherUserEmail = post.post_owner
+
+
+        val databaseReference = FirebaseDatabase.getInstance("https://maad-bb9db-default-rtdb.asia-southeast1.firebasedatabase.app").getReference("userReg")
+
+        databaseReference.orderByChild("email").equalTo(otherUserEmail).addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.exists()) {
+                    for (data in snapshot.children) {
+                        val otherUserId = data.child("uid").value.toString() // get the user ID
+                        val otherUserName = data.child("name").value.toString() // get the user's name
+                        // display
+                        Log.d(TAG, "User ID: $otherUserId, Name: $otherUserName")
+
+                        // Generate chat ID
+                        val chatId = getChatId(currentUserId!!, otherUserId)
+
+
+                        // Launch ChatActivity with necessary data
+                        val intent = Intent(requireContext(), ChatMessagesActivity::class.java)
+                        intent.putExtra("chatId", chatId)
+                        intent.putExtra("otherUserName", otherUserName)
+                        intent.putExtra("otherUserId", otherUserId)
+                        startActivity(intent)
+
+
+                    }
+                } else {
+                    // handle the case where no user was found with the given email
+                    Log.d(TAG, "Could not find user")
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                // handle any errors that occur while trying to read the data
+            }
+        })
+
+    }
+
+    private fun getChatId(userId1: String, userId2: String): String {
+        return if (userId1 < userId2) {
+            "$userId1-$userId2"
+        } else {
+            "$userId2-$userId1"
         }
     }
 
