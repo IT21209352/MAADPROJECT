@@ -10,6 +10,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupActionBarWithNavController
+import com.example.helpinghand.adapters.NetworkUtils
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
@@ -21,6 +22,13 @@ class MainActivity : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        // Inflate the layout for this fragment
+        if (NetworkUtils.isNetworkAvailable(this)) {
+            // Network is available, continue with app startup
+        } else {
+            // Network is not available, show an error message or take appropriate action
+            Toast.makeText(this@MainActivity, "Please check your network connection", Toast.LENGTH_LONG).show()
+        }
 
 
 //        val db = Firebase.firestore

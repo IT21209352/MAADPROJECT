@@ -3,11 +3,20 @@ package com.example.helpinghand
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
+import android.widget.Toast
+import com.example.helpinghand.adapters.NetworkUtils
 
 class MainActivity2 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main2)
+
+        if (NetworkUtils.isNetworkAvailable(this)) {
+            // Network is available, continue with app startup
+        } else {
+            // Network is not available, show an error message or take appropriate action
+            Toast.makeText(this@MainActivity2, "Please check your network connection", Toast.LENGTH_LONG).show()
+        }
 
         val fragmentName = intent.getStringExtra("fragment_to_load")
 
