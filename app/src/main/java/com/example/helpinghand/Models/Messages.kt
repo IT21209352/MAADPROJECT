@@ -7,5 +7,5 @@ data class Messages(
     val senderId: String? = null,
     val receiverId: String? = null,
     val time: Long = 0L,
-    val isRead: Boolean = false
+    var isRead: Boolean = false
 )

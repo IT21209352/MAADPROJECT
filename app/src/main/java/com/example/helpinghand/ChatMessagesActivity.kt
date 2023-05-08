@@ -85,6 +85,25 @@ class ChatMessagesActivity : AppCompatActivity() {
             }
         }
 
+        //Update read status of messages when the chat is opened
+        val query = mDbRef.child("messagesZ").orderByChild("chatId").equalTo(chatId)
+        query.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                for (messageSnapshot in dataSnapshot.children) {
+                    val message = messageSnapshot.getValue(Messages::class.java)
+                    if (message != null && message.receiverId == currentUserId && !message.isRead) {
+                        message.isRead = true
+                        messageSnapshot.ref.setValue(message)
+                    }
+                }
+            }
+            override fun onCancelled(error: DatabaseError) {
+                // Handle the error
+            }
+        })
+
+
+
         // Set up the ValueEventListener to listen for changes in the messages node
         mDbRef.child("messagesZ").addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -104,48 +123,7 @@ class ChatMessagesActivity : AppCompatActivity() {
 
     }
 
-    private fun popupDelete() {
 
-        val popupMenu = androidx.appcompat.widget.PopupMenu(this, msg)
-
-        popupMenu.inflate(R.menu.popup_message)
-
-        popupMenu.setOnMenuItemClickListener {
-            when (it.itemId) {
-                R.id.delete -> {
-                    Toast.makeText(this, "Message Deleted", Toast.LENGTH_SHORT).show()
-                    true
-                }
-                R.id.edit -> {
-                    Toast.makeText(this, "Message Edited", Toast.LENGTH_SHORT).show()
-                    true
-                }
-                else -> {
-                    true
-                }
-            }
-
-        }
-
-        // event on long press on image
-        msg.setOnLongClickListener {
-            try {
-                val popup = androidx.appcompat.widget.PopupMenu::class.java.getDeclaredField("mPopup")
-                popup.isAccessible = true
-                val menu = popup.get(popupMenu)
-                menu.javaClass.getDeclaredMethod("setForceShowIcon", Boolean::class.java)
-                    .invoke(menu,true)
-            }
-            catch (e: Exception)
-            {
-                Log.d("error", e.toString())
-            }
-            finally {
-                popupMenu.show()
-            }
-            true
-        }
-    }
 
     private fun sendMessage(message: String) {
         val timestamp = System.currentTimeMillis().toString()
