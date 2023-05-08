@@ -16,6 +16,7 @@ import androidx.test.ext.junit.rules.activityScenarioRule
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.example.helpinghand.Models.Post
+import com.example.helpinghand.Models.ProfileData
 import org.junit.After
 import org.junit.runner.RunWith
 import org.junit.Assert.*
@@ -125,4 +126,37 @@ class PostTest {
     }
 }
 
+
+class ProfileDataTest {
+
+    @Test
+    fun testProfileDataConstructor() {
+        val profileData = ProfileData("Test User", "testuser@example.com", "12:00", "123")
+
+        assertEquals("Test User", profileData.loggedUserName)
+        assertEquals("testuser@example.com", profileData.loggedUserEmail)
+        assertEquals("12:00", profileData.loggedUserTime)
+        assertEquals("123", profileData.loggedUserID)
+    }
+
+    @Test
+    fun testProfileDataGetters() {
+        val profileData = ProfileData("Test User", "testuser@example.com", "12:00", "123")
+
+        assertEquals("Test User", profileData.loggedUserName)
+        assertEquals("testuser@example.com", profileData.loggedUserEmail)
+        assertEquals("12:00", profileData.loggedUserTime)
+        assertEquals("123", profileData.loggedUserID)
+    }
+
+    @Test
+    fun testProfileDataEquals() {
+        val profileData1 = ProfileData("Test User", "testuser@example.com", "12:00", "123")
+        val profileData2 = ProfileData("Test User", "testuser@example.com", "12:00", "123")
+        val profileData3 = ProfileData("Another User", "anotheruser@example.com", "13:00", "456")
+
+        assertEquals(profileData1, profileData2)
+        assert(profileData1 != profileData3)
+    }
+}
 

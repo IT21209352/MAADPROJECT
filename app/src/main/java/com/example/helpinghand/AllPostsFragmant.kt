@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.manager.SupportRequestManagerFragment
 import com.example.helpinghand.Models.Post
 import com.example.helpinghand.adapters.AllPostsAdaptor
+import com.example.helpinghand.adapters.NetworkUtils
 import com.example.helpinghand.databinding.FragmentAllPostsFragmantBinding
 import com.example.helpinghand.databinding.FragmentMyPostsBinding
 import com.google.firebase.auth.FirebaseAuth
@@ -30,7 +31,7 @@ class AllPostsFragmant : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
+
         binding = FragmentAllPostsFragmantBinding.inflate(inflater, container, false)
         firebaseAuth = Firebase.auth
         firebaseAuth = FirebaseAuth.getInstance()
