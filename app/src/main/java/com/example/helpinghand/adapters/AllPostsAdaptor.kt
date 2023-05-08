@@ -1,6 +1,7 @@
 package com.example.helpinghand.adapters
 
 import android.content.ContentValues
+import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
@@ -22,7 +23,12 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
-class AllPostsAdaptor(private val posts: MutableList<Post>, private val fragmentManager: FragmentManager ) : RecyclerView.Adapter<AllPostsAdaptor.ViewHolder>() {
+class AllPostsAdaptor(
+    private val context: Context,
+    private val onChatButtonClickListener: OnChatButtonClickListener,
+    private val posts: MutableList<Post>,
+    private val fragmentManager: FragmentManager
+    ) : RecyclerView.Adapter<AllPostsAdaptor.ViewHolder>() {
     private val colors = arrayOf("#FFCDD2", "#F8BBD0", "#E1BEE7", "#D1C4E9", "#C5CAE9", "#BBDEFB", "#B3E5FC", "#B2EBF2", "#B2DFDB", "#C8E6C9")
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -79,32 +85,14 @@ class AllPostsAdaptor(private val posts: MutableList<Post>, private val fragment
         }
 
         holder.helpbtn.setOnClickListener {
-//            post.post_key?.let { it1 ->
-//                FirebaseDatabase.getInstance("https://maad-bb9db-default-rtdb.asia-southeast1.firebasedatabase.app").getReference("posts").child(
-//                    it1
-//                )
-//                    .removeValue()
-//                    .addOnSuccessListener {
-//                        // Remove the post from the postList and update the adapter
-//                        posts.remove(post)
-//                        notifyDataSetChanged()
-//
-//                        Toast.makeText(
-//                            holder.itemView.context,
-//                            "Post deleted successfully",
-//                            Toast.LENGTH_SHORT
-//                        ).show()
-//                    }
-//                    .addOnFailureListener { e ->
-//                        Toast.makeText(
-//                            holder.itemView.context,
-//                            "Failed to delete post: ${e.message}",
-//                            Toast.LENGTH_SHORT
-//                        ).show()
-//                    }
-//            }
+            onChatButtonClickListener.onChatButtonClick(post)
         }
     }
 
     override fun getItemCount() = posts.size
+
+    // Interface to handle button click
+    interface OnChatButtonClickListener {
+        fun onChatButtonClick(post: Post)
+    }
 }

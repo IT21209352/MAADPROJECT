@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -13,31 +14,32 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.helpinghand.ChatFragment
 import com.example.helpinghand.ChatMessagesActivity
+import com.example.helpinghand.Models.ChatList
 import com.example.helpinghand.R
+import java.text.SimpleDateFormat
+import java.util.*
 
 
+class ChatListAdapter(
+    private val context: Context,
+    //private var chatList: List<ChatList>,
+    //private val currentUserId: String
+):RecyclerView.Adapter<ChatListAdapter.ViewHolder>(){
 
-class ChatListAdapter:RecyclerView.Adapter<ChatListAdapter.ViewHolder>(){
-
-    val fragmentChat = ChatFragment()
-
-    class ViewHolder(view: View):RecyclerView.ViewHolder(view){
+    private var chatList: List<ChatList> = mutableListOf()
 
 
-        val imgUser: ImageView
-        val tvChatName: TextView
-        val tvRecMsg: TextView
-        val tvRecTime: TextView
-        val tvMsgCount: TextView
+    fun updateData(newList: MutableList<ChatList>) {
+        chatList = newList
+        notifyDataSetChanged()
+    }
 
-        init {
-            imgUser = view.findViewById(R.id.imgUser)
-            tvChatName = view.findViewById(R.id.tvChatName)
-            tvRecMsg = view.findViewById(R.id.tvRecMsg)
-            tvMsgCount = view.findViewById(R.id.tvMsgCount)
-            tvRecTime = view.findViewById(R.id.tvRecTime)
-        }
+    inner class ViewHolder(view: View):RecyclerView.ViewHolder(view){
 
+        val userNameTextView: TextView = itemView.findViewById(R.id.tvChatName)
+        val lastMessageTextView: TextView = itemView.findViewById(R.id.tvRecMsg)
+        val timeTextView: TextView = itemView.findViewById(R.id.tvRecTime)
+        val unreadCountTextView: TextView = itemView.findViewById(R.id.tvMsgCount)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int):ViewHolder{
@@ -47,63 +49,60 @@ class ChatListAdapter:RecyclerView.Adapter<ChatListAdapter.ViewHolder>(){
     }
 
     override fun getItemCount(): Int {
-        return 1
+        return chatList.size
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val chat = chatList[position]
+        holder.userNameTextView.text = chat.chatName
+        holder.lastMessageTextView.text = chat.lastMessage
+        holder.timeTextView.text = getFormattedTime(chat.lastMessageTime!!)
 
-        holder.tvChatName.text = "Adam Driver"
-        holder.tvRecMsg.text = "Hello! I'm Fine!"
-        holder.tvMsgCount.text = "1"
-        holder.tvRecTime.text = "11.04PM"
-
-        holder.itemView.setOnClickListener { view ->
-            val intent = Intent(view.context, ChatMessagesActivity::class.java)
-            view.context.startActivity(intent)
+        if (chat.unreadCount > 0) {
+            holder.unreadCountTextView.visibility = View.VISIBLE
+            holder.unreadCountTextView.text = chat.unreadCount.toString()
+        } else {
+            holder.unreadCountTextView.visibility = View.GONE
         }
 
-        holder.itemView.setOnLongClickListener { view ->
+        holder.itemView.setOnClickListener {
+            val intent = Intent(context, ChatMessagesActivity::class.java)
+            intent.putExtra("chatId", chat.chatId)
+            intent.putExtra("otherUserName", chat.chatName)
+            intent.putExtra("otherUserId", chat.otherUserId)
 
-            val popupMenu = androidx.appcompat.widget.PopupMenu(view.context, holder.itemView)
-
-
-            popupMenu.inflate(R.menu.popup_chat)
-
-            popupMenu.setOnMenuItemClickListener {
-                when (it.itemId) {
-                    R.id.delete -> {
-                        Toast.makeText(view.context, "Chat Deleted", Toast.LENGTH_SHORT).show()
-                        true
-                    }
-                    else -> {
-                        true
-                    }
-                }
-
-            }
-            try {
-                val popup = androidx.appcompat.widget.PopupMenu::class.java.getDeclaredField("mPopup")
-                popup.isAccessible = true
-                val menu = popup.get(popupMenu)
-                menu.javaClass.getDeclaredMethod("setForceShowIcon", Boolean::class.java)
-                    .invoke(menu,true)
-            }
-            catch (e: Exception)
-            {
-                Log.d("error", e.toString())
-            }
-            finally {
-                popupMenu.show()
-            }
-            true
-
+            context.startActivity(intent)
         }
 
     }
 
-
-
+    fun updateChatList(newList: List<ChatList>) {
+        chatList = newList
+        notifyDataSetChanged()
     }
+
+    fun updateUnreadCount(chatId: String, unreadCount: Int) {
+        val index = chatList.indexOfFirst { it.chatId == chatId }
+        if (index != -1) {
+            val updatedChat = chatList[index].copy(unreadCount = unreadCount)
+            val updatedList = chatList.toMutableList()
+            updatedList[index] = updatedChat
+            updateChatList(updatedList)
+        }
+    }
+
+    private fun getFormattedTime(time: Long): String {
+        val calendar = Calendar.getInstance()
+        calendar.timeInMillis = time
+        val formatter = SimpleDateFormat("hh:mm a", Locale.getDefault())
+        return formatter.format(calendar.time)
+    }
+
+
+
+
+
+}
 
 
 
