@@ -22,7 +22,7 @@ class MainActivity2 : AppCompatActivity() {
 
         if (fragmentName == "AllPostsFragment") {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.fragment_container_1, AllPostsFragmant())
+                .replace(R.id.fragmentContainerView, AllPostsFragmant())
                 .commit()
         }
 

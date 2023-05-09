@@ -162,9 +162,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:src="@drawable/baseline_send_24"
-            android:background="@drawable/circle"
-
-            >
+            android:background="@drawable/circle">
 
         </ImageButton>
 

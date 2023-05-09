@@ -46,10 +46,7 @@ class AllPostsFragmant : Fragment() {
         }
         loadMyPosts()
         return binding.root
-
-       // return inflater.inflate(R.layout.fragment_all_posts_fragmant, container, false)
     }
-
 
     private fun loadMyPosts() {
         val userId = firebaseAuth.currentUser?.email; /* */
@@ -62,17 +59,10 @@ class AllPostsFragmant : Fragment() {
                         for (postSnapshot in snapshot.children) {
                             val postId = postSnapshot.key.toString()
                             val post = postSnapshot.getValue(Post::class.java)
-
-                            //   Log.d(ContentValues.TAG, "-----------------------------------this is post id $pos")
-                            //    Log.d(ContentValues.TAG, "DocumentSnapshot added with ID: $commentID")
-
                             if (post != null) {
-
                                     postList.add(post)
                                     postAdapter.notifyDataSetChanged()
-
                             }
-
                         }
                     }
 

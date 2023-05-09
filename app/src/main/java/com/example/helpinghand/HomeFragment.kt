@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -57,9 +58,9 @@ class HomeFragment : Fragment() {
     ): View? {
 
         val view = inflater.inflate(R.layout.fragment_home, container, false)
-        auth = Firebase.auth
+        val cmntBtn= view.findViewById<ImageButton>(R.id.cmntBtn)
 
-        val cmntBtn= view.findViewById<Button>(R.id.cmntBtn)
+        auth = Firebase.auth
 
         dataLoaders()
 
