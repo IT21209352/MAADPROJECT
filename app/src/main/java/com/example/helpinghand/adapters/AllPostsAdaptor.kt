@@ -17,6 +17,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.helpinghand.HomeFragment
+import com.example.helpinghand.Models.GlobalPostsList
 import com.example.helpinghand.Models.Post
 import com.example.helpinghand.R
 import com.example.helpinghand.myPostsFragment
@@ -50,6 +51,9 @@ class AllPostsAdaptor(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         var auth: FirebaseAuth = Firebase.auth
+
+        GlobalPostsList.setPosts(posts)
+
         val post = posts[position]
 
         val color = colors[position % colors.size]
@@ -111,6 +115,4 @@ class AllPostsAdaptor(
         fun onChatButtonClick(post: Post)
     }
 
-
-
-}
+    }

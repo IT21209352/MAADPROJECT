@@ -23,7 +23,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="226dp"
             android:orientation="vertical">
 
             <TextView
@@ -42,16 +42,30 @@
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/cmntPosttitleView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:hint="@string/shwcmnt"
+                android:padding="5dp"
+                android:text="@string/btn_post"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="italic" />
+
+            <TextView
                 android:id="@+id/display_the_commnet"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
                 android:gravity="center"
                 android:hint="@string/shwcmnt"
+                android:padding="5dp"
                 android:textColor="@color/black"
                 android:textSize="20sp"
-                android:textStyle="bold"
-                android:layout_marginTop="5dp"
-                android:padding="5dp"/>
+            />
 
             <EditText
                 android:id="@+id/updateCommentInput"
@@ -73,31 +87,31 @@
                     android:id="@+id/cmntDeleteBtn"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="7dp"
+                    android:layout_marginEnd="7dp"
                     android:layout_weight="0.3"
                     android:padding="8dp"
-                    android:text="@string/deletetxt"
-                    android:layout_marginStart="7dp"
-                    android:layout_marginEnd="7dp"/>
+                    android:text="@string/deletetxt" />
 
                 <Button
                     android:id="@+id/CmntlikeBtn"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="7dp"
+                    android:layout_marginEnd="7dp"
                     android:layout_weight="0.3"
                     android:padding="8dp"
-                    android:text="@string/lknBtn"
-                    android:layout_marginStart="7dp"
-                    android:layout_marginEnd="7dp"/>
+                    android:text="@string/lknBtn" />
 
                 <Button
                     android:id="@+id/saveUpdatedCmntBtn"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="7dp"
+                    android:layout_marginEnd="7dp"
                     android:layout_weight="0.3"
                     android:padding="8dp"
-                    android:text="@string/svmecmnt"
-                    android:layout_marginStart="7dp"
-                    android:layout_marginEnd="7dp"/>
+                    android:text="@string/svmecmnt" />
 
             </LinearLayout>
 

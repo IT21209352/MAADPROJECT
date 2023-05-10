@@ -11,6 +11,13 @@ class MainActivity2 : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main2)
 
+        if (savedInstanceState == null) {
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.fragmentContainerView, AllPostsFragmant())
+                .commit()
+        }
+
+
         if (NetworkUtils.isNetworkAvailable(this)) {
             // Network is available, continue with app startup
         } else {
@@ -20,11 +27,11 @@ class MainActivity2 : AppCompatActivity() {
 
         val fragmentName = intent.getStringExtra("fragment_to_load")
 
-        if (fragmentName == "AllPostsFragment") {
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.fragmentContainerView, AllPostsFragmant())
-                .commit()
-        }
+//        if (fragmentName == "AllPostsFragment") {
+//            supportFragmentManager.beginTransaction()
+//                .replace(R.id.fragmentContainerView, AllPostsFragmant())
+//                .commit()
+//        }
 
         val HomeBtn:ImageView = findViewById(R.id.imgBtnHome)
         val ChatBtn :ImageView = findViewById(R.id.imgBtnChat)

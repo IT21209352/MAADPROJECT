@@ -12,6 +12,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.manager.SupportRequestManagerFragment
+import com.example.helpinghand.Models.GlobalPostsList
 import com.example.helpinghand.Models.Post
 import com.example.helpinghand.adapters.AllPostsAdaptor
 import com.example.helpinghand.databinding.FragmentAllPostsFragmantBinding
@@ -71,7 +72,6 @@ class AllPostsFragmant : Fragment(), AllPostsAdaptor.OnChatButtonClickListener {
                             //    Log.d(ContentValues.TAG, "DocumentSnapshot added with ID: $commentID")
 
                             if (post != null) {
-
                                 postList.add(post)
                                 postAdapter.notifyDataSetChanged()
 

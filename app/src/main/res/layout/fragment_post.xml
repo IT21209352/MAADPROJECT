@@ -17,7 +17,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="@color/orange"
+            android:background="@color/indigo_500"
             android:gravity="center"
             android:text="@string/title_NewPost"
             android:textSize="28sp"

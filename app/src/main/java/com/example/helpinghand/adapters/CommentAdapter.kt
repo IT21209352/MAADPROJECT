@@ -1,7 +1,9 @@
 package com.example.helpinghand.adapters
 import android.app.Activity
 import android.content.ContentValues.TAG
+import android.content.Context
 import android.graphics.Color
+import android.nfc.Tag
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -18,6 +20,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.helpinghand.AllPostsFragmant
 import com.example.helpinghand.Models.Comment
+import com.example.helpinghand.Models.GlobalPostsList
 import com.example.helpinghand.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -26,6 +29,7 @@ import com.google.firebase.ktx.Firebase
 
 
 class CommentAdapter: RecyclerView.Adapter<CommentAdapter.MyViewHolder>() {
+
 
     private val commentList = ArrayList<Comment>()
     private val colors = arrayOf("#E1BEE7", "#D1C4E9", "#C5CAE9", "#BBDEFB", "#B3E5FC", "#B2EBF2", "#B2DFDB", "#C8E6C9")
@@ -47,6 +51,7 @@ class CommentAdapter: RecyclerView.Adapter<CommentAdapter.MyViewHolder>() {
 
         holder.displayCommentOwner.text = currentitem.comments_owner
         holder.displayTheComment.text = currentitem.comments_comment
+        holder.postTitleView.text = "@" + currentitem.postTitle
         val activity = holder.itemView.context as Activity
 
         val color = colors[position % colors.size]
@@ -73,6 +78,7 @@ class CommentAdapter: RecyclerView.Adapter<CommentAdapter.MyViewHolder>() {
         val editBtn: Button = itemView.findViewById(R.id.saveUpdatedCmntBtn)
         val cmntLikeBtn : Button = itemView.findViewById(R.id.CmntlikeBtn)
         val updtCmntInput : EditText = itemView.findViewById(R.id.updateCommentInput)
+        val postTitleView : TextView = itemView.findViewById(R.id.cmntPosttitleView)
 
         fun bind(comment: Comment,activity: Activity) {
 
@@ -147,20 +153,32 @@ class CommentAdapter: RecyclerView.Adapter<CommentAdapter.MyViewHolder>() {
         }
 
         private fun navToPost(comment: Comment, fragmentManager : FragmentManager){
-            val postPosi = comment.postPosi
-            val postFragment = AllPostsFragmant()
-            val bundle = Bundle()
-           // Log.d(TAG, "-------------------------------------------------------- $postPosi")
-            bundle.putString("postPosi", postPosi)
-            postFragment.arguments = bundle
+            val postID = comment.postID
+            val postList = GlobalPostsList.getPosts()
+            val posi = postList.indexOfFirst { it.post_key == postID }
 
-            val transaction = fragmentManager.beginTransaction()
-            transaction.replace(R.id.fragmentContainerView, postFragment)
-            transaction.addToBackStack(null)
-            transaction.commit()
+            if (posi != -1){
+
+                val postFragment = AllPostsFragmant()
+                val bundle = Bundle()
+
+                bundle.putString("postPosi", posi.toString())
+                postFragment.arguments = bundle
+
+                val transaction = fragmentManager.beginTransaction()
+                transaction.replace(R.id.fragmentContainerView, postFragment)
+                transaction.addToBackStack(null)
+                transaction.commit()
+
+            }else{
+                  Log.d(TAG, "------------------------------------------------Post not found")
+            }
+
         }
     }
 
 
 }
+//  Log.d(TAG, "-------------------------------------------------------- ${GlobalPostsList.getPosts()}")
+
 

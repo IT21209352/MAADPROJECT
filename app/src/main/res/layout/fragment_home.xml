@@ -53,7 +53,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_weight="100"
-            android:background="@drawable/input_background"
+            android:background="@color/color5"
             android:hint="@string/message"
             android:inputType="text"
             android:textAlignment="center"

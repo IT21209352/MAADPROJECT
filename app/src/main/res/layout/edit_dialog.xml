@@ -17,8 +17,7 @@
             android:id="@+id/etMessage"
             android:layout_width="300dp"
             android:layout_height="100dp"
-            android:background="@drawable/input_background"
-            />
+            android:background="@color/color6" />
 
         <ImageButton
             android:id="@+id/btnUpdateMsg"

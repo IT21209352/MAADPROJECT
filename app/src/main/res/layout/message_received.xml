@@ -16,11 +16,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:background="@drawable/rec_message"
+        android:background="@color/color6"
         android:padding="10dp"
         android:text="Hi! I'm fine!"
-        android:textSize="20sp"
         android:textColor="@color/black"
+        android:textSize="20sp"
 
         />
 

@@ -200,6 +200,7 @@ class HomeFragment : Fragment() {
         adapter = CommentAdapter()
         commentRecyclerView.adapter = adapter
         viewModel = ViewModelProvider(this).get(CommentViewModel::class.java)
+
         viewModel.allComments.observe(viewLifecycleOwner, Observer {
             adapter.updateCommentList(it)
         })
