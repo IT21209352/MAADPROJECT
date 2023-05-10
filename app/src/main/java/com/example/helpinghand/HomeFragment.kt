@@ -2,6 +2,7 @@ package com.example.helpinghand
 import android.content.AbstractThreadedSyncAdapter
 import android.content.ContentValues.TAG
 import android.content.Intent
+import android.icu.text.CaseMap.Title
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -13,6 +14,7 @@ import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -46,6 +48,11 @@ class HomeFragment : Fragment() {
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var postAdapter: PostAdapter
     private var postList: MutableList<Post> = mutableListOf()
+    private lateinit var postData : HashMap<String,String>
+    private lateinit var postID : String
+    private lateinit var postOwner : String
+    private lateinit var postTitle: String
+    private lateinit var postPosi: String
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -72,11 +79,23 @@ class HomeFragment : Fragment() {
             textCollectionRef = db!!.collection("comments")
             val user =  auth.currentUser?.email.toString()
 
+//
+//            var comments_comment : String ?=null ,
+//            var comments_owner : String ?=null,
+//            var comment_id : String ?= null,
+//            val postID : String ?= null,
+//            val postOwner : String ?= null,
+//            val postTitle : String ?= null,
+
             if (texts.isNotEmpty()) {
                 val textMap = hashMapOf(
                     "comments_comment" to texts,
                     "comments_owner" to user,
-                    "comment_id" to ""
+                    "comment_id" to "",
+                    "postID" to postID,
+                    "postOwner" to postOwner,
+                    "postTitle" to postTitle,
+                    "postPosi" to postPosi
                 )
 
                 val firebaseDatabase = FirebaseDatabase.getInstance("https://maad-bb9db-default-rtdb.asia-southeast1.firebasedatabase.app")
@@ -92,10 +111,16 @@ class HomeFragment : Fragment() {
                             val textMap2 = hashMapOf(
                                 "comments_comment" to texts,
                                 "comments_owner" to user,
-                                "comment_id" to commentID
+                                "comment_id" to commentID,
+                                "postID" to postID,
+                                "postOwner" to postOwner,
+                                "postTitle" to postTitle,
+                                "postPosi" to postPosi
                             )
                             firebaseDatabase.child("post_comments").child(commentID).setValue(textMap2)
                             cmntInput.setText("")
+                            val fragmentTransaction = parentFragmentManager.beginTransaction()
+                            fragmentTransaction.detach(this).attach(this).commit()
                         }
                         .addOnFailureListener { e ->
                             Toast.makeText(activity, "Error Occurred", Toast.LENGTH_SHORT).show()
@@ -104,7 +129,6 @@ class HomeFragment : Fragment() {
                 }
             }
         }
-
 
         return view
     }
@@ -180,11 +204,9 @@ class HomeFragment : Fragment() {
             adapter.updateCommentList(it)
         })
 
-        //data passing
-        val commentText = arguments?.getString("postOwner") ?: ""
-        val commentTextView = view.findViewById<EditText>(R.id.cmntInput)
-        commentTextView.setText(commentText)
-        commentTextView.setSelection(commentTextView.text.length)
-
+         postTitle = arguments?.getString("postTitle") ?: ""
+         postOwner =     arguments?.getString("postOwner") ?: ""
+         postID = arguments?.getString("postID") ?: ""
+        postPosi = arguments?.getString("postPosi") ?: ""
     }
 }

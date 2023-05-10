@@ -16,7 +16,7 @@ import com.example.helpinghand.R
 import com.google.firebase.database.FirebaseDatabase
 
 class PostAdapter(private val posts: MutableList<Post> ) : RecyclerView.Adapter<PostAdapter.ViewHolder>() {
-    private val colors = arrayOf("#FFCDD2", "#F8BBD0", "#E1BEE7", "#D1C4E9", "#C5CAE9", "#BBDEFB", "#B3E5FC", "#B2EBF2", "#B2DFDB", "#C8E6C9")
+    private val colors = arrayOf("#E1BEE7","#D1C4E9", "#C5CAE9", "#BBDEFB", "#B3E5FC", "#B2EBF2", "#B2DFDB", "#C8E6C9")
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val postImage: ImageView = itemView.findViewById(R.id.post_image)

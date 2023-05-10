@@ -49,19 +49,32 @@
         android:hint="@string/txt_email"
         android:inputType="textEmailAddress" />
 
+    <EditText
+        android:id="@+id/edtTxtUserName"
+        android:layout_width="@dimen/width_inputbutton"
+        android:layout_height="@dimen/height_inputbutton"
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp"
+        android:width="@dimen/width_inputbutton"
+        android:autofillHints="@string/txt_username"
+        android:ems="10"
+        android:gravity="center|center_horizontal|center_vertical"
+        android:hint="@string/txt_name"
+        android:inputType="textEmailAddress" />
 
-<!--    <EditText-->
-<!--        android:id="@+id/editTextTextPersonMobile"-->
-<!--        android:layout_width="@dimen/width_inputbutton"-->
-<!--        android:layout_height="@dimen/height_inputbutton"-->
-<!--        android:layout_gravity="center"-->
-<!--        android:layout_marginTop="5dp"-->
-<!--        android:width="@dimen/width_inputbutton"-->
-<!--        android:autofillHints="@string/txt_username"-->
-<!--        android:ems="10"-->
-<!--        android:gravity="center|center_horizontal|center_vertical"-->
-<!--        android:hint="@string/user_phn_number"-->
-<!--        android:inputType="phone" />-->
+
+    <!--    <EditText-->
+    <!--        android:id="@+id/editTextTextPersonMobile"-->
+    <!--        android:layout_width="@dimen/width_inputbutton"-->
+    <!--        android:layout_height="@dimen/height_inputbutton"-->
+    <!--        android:layout_gravity="center"-->
+    <!--        android:layout_marginTop="5dp"-->
+    <!--        android:width="@dimen/width_inputbutton"-->
+    <!--        android:autofillHints="@string/txt_username"-->
+    <!--        android:ems="10"-->
+    <!--        android:gravity="center|center_horizontal|center_vertical"-->
+    <!--        android:hint="@string/user_phn_number"-->
+    <!--        android:inputType="phone" />-->
 
     <EditText
         android:id="@+id/edtTxtUserPasswrod"

@@ -3,7 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/round_border"
+    android:layout_marginStart="10dp"
+    android:layout_marginEnd="15dp"
+    android:layout_marginTop="10dp">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cmntCardView"
@@ -11,7 +15,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginVertical="3dp"
-        android:layout_marginStart="1dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginEnd="2dp"
         app:cardBackgroundColor="@color/teal_200"
         app:cardCornerRadius="8dp"
         app:cardElevation="10dp">
@@ -25,11 +30,15 @@
                 android:id="@+id/display_comment_ownner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center|left"
+                android:layout_marginStart="2dp"
+                android:layout_marginEnd="2dp"
+                android:background="@drawable/round_border"
+                android:gravity="center"
                 android:hint="@string/cmntownername"
+                android:padding="5dp"
                 android:paddingLeft="10dp"
-                android:textColor="@color/white"
-                android:textSize="15sp"
+                android:textColor="@android:color/black"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -40,7 +49,9 @@
                 android:hint="@string/shwcmnt"
                 android:textColor="@color/black"
                 android:textSize="20sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:layout_marginTop="5dp"
+                android:padding="5dp"/>
 
             <EditText
                 android:id="@+id/updateCommentInput"
@@ -62,28 +73,34 @@
                     android:id="@+id/cmntDeleteBtn"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="right"
-                    android:layout_weight="1"
+                    android:layout_weight="0.3"
                     android:padding="8dp"
-                    android:text="@string/deletetxt" />
+                    android:text="@string/deletetxt"
+                    android:layout_marginStart="7dp"
+                    android:layout_marginEnd="7dp"/>
 
                 <Button
                     android:id="@+id/CmntlikeBtn"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_weight="0.3"
                     android:padding="8dp"
-                    android:text="@string/lknBtn" />
+                    android:text="@string/lknBtn"
+                    android:layout_marginStart="7dp"
+                    android:layout_marginEnd="7dp"/>
 
                 <Button
                     android:id="@+id/saveUpdatedCmntBtn"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_weight="0.3"
                     android:padding="8dp"
-                    android:text="@string/svmecmnt" />
+                    android:text="@string/svmecmnt"
+                    android:layout_marginStart="7dp"
+                    android:layout_marginEnd="7dp"/>
 
             </LinearLayout>
+
 
         </LinearLayout>
 
