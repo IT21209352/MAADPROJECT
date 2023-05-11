@@ -20,6 +20,7 @@ import com.example.helpinghand.HomeFragment
 import com.example.helpinghand.Models.GlobalPostsList
 import com.example.helpinghand.Models.Post
 import com.example.helpinghand.R
+import com.example.helpinghand.ViewProfile
 import com.example.helpinghand.myPostsFragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -108,6 +109,24 @@ class AllPostsAdaptor(
 
         holder.helpbtn.setOnClickListener {
             onChatButtonClickListener.onChatButtonClick(post)
+        }
+
+        holder.postOwner.setOnClickListener {
+            val userID = post.post_ownerID
+            val auth = FirebaseAuth.getInstance()
+            val uID = auth.currentUser?.uid
+            if (userID != uID){
+                val proFragment = ViewProfile()
+                val bundle = Bundle()
+
+                bundle.putString("PostOwnerID", userID)
+                proFragment.arguments = bundle
+
+                val transaction = fragmentManager.beginTransaction()
+                transaction.replace(R.id.fragmentContainerView, proFragment)
+                transaction.addToBackStack(null)
+                transaction.commit()
+            }
         }
     }
 
