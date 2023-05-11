@@ -44,26 +44,28 @@ class FaqFragment : Fragment() {
         val btnadd=view.findViewById<Button>(R.id.btnadd)
         val  eidt= view.findViewById<EditText>(R.id.tvEidtT)
         btnadd.setOnClickListener {
-            val userid= firebaseAuth.currentUser?.uid
-            val faqid=firebaseDatabase.push().key
+            val userid = firebaseAuth.currentUser?.uid
+            val faqid = firebaseDatabase.push().key
             val faqtext = eidt.text.toString()
 
+            if (faqtext.isNotEmpty()) { // Check if the text field is not empty
+                val faq = FAQ(faqid, userid, faqtext)
+                faqlist.add(faq)
 
-            val faq= FAQ(faqid,userid,faqtext)
-            faqlist.add(faq)
-
-            if (faqid != null) {
-                firebaseDatabase.child(faqid).setValue(faq)
-                    .addOnCompleteListener {task->if (task.isSuccessful){
-
-
-                        eidt.setText("")
-                        Toast.makeText(requireContext(),"FAQ added!",Toast.LENGTH_SHORT).show()
-
-                    } else{
-                        Toast.makeText(requireContext(),"Failed to send message",Toast.LENGTH_SHORT).show()
-                    }
-                    }
+                if (faqid != null) {
+                    firebaseDatabase.child(faqid).setValue(faq)
+                        .addOnCompleteListener { task ->
+                            if (task.isSuccessful) {
+                                eidt.setText("")
+                                Toast.makeText(requireContext(), "FAQ added!", Toast.LENGTH_SHORT).show()
+                                faqadapter.notifyDataSetChanged() // Notify adapter that the data has changed
+                            } else {
+                                Toast.makeText(requireContext(), "Failed to add FAQ", Toast.LENGTH_SHORT).show()
+                            }
+                        }
+                }
+            } else {
+                Toast.makeText(requireContext(), "Please enter a FAQ", Toast.LENGTH_SHORT).show()
             }
 
         }

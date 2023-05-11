@@ -62,14 +62,14 @@
         android:padding="10dp"
         android:weightSum="100">
 
-        <ImageButton
-            android:id="@+id/imgAttachBtn"
-            android:src="@drawable/baseline_attach_file_24"
-            android:backgroundTint="@color/white"
-            android:background="@drawable/circle"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            app:tint="@color/black" />
+<!--        <ImageButton-->
+<!--            android:id="@+id/imgAttachBtn"-->
+<!--            android:src="@drawable/baseline_attach_file_24"-->
+<!--            android:backgroundTint="@color/white"-->
+<!--            android:background="@drawable/circle"-->
+<!--            android:layout_width="50dp"-->
+<!--            android:layout_height="50dp"-->
+<!--            app:tint="@color/black" />-->
 
         <EditText
             android:id="@+id/edtMessage"
@@ -78,7 +78,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_weight="100"
-            android:background="@color/color5"
+            android:background="@drawable/input_background"
             android:hint="@string/message"
             android:inputType="text"
             android:textAlignment="center"

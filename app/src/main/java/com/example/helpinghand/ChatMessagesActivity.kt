@@ -110,6 +110,9 @@ class ChatMessagesActivity : AppCompatActivity() {
                     val message = messageSnapshot.getValue(Messages::class.java)
                     if (message?.chatId == chatId) {
                         messageList.add(message)
+                        if(message.receiverId == currentUserId){
+                            messageSnapshot.child("read").ref.setValue(true)
+                        }
                     }
                 }
                 adapter.notifyDataSetChanged()

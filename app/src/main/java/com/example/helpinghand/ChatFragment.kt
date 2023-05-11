@@ -2,10 +2,13 @@ package com.example.helpinghand
 
 import android.content.ContentValues.TAG
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -17,11 +20,11 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import org.checkerframework.checker.nullness.qual.NonNull
+import java.util.*
 
 class ChatFragment : Fragment() {
 
-    private lateinit var chatListAdapter: ChatListAdapter
+    lateinit var chatListAdapter: ChatListAdapter
     private lateinit var currentUserId: String
 
     override fun onCreateView(
@@ -36,6 +39,20 @@ class ChatFragment : Fragment() {
         val chatListRecyclerView = view.findViewById<RecyclerView>(R.id.recycler_chatList)
         chatListRecyclerView.adapter = chatListAdapter
         chatListRecyclerView.layoutManager = LinearLayoutManager(requireContext())
+
+        val filterEditText = view.findViewById<EditText>(R.id.edtSearch)
+
+        filterEditText.addTextChangedListener(object : TextWatcher {
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                // Call fetchChats() with the updated search query
+                fetchChats(s.toString())
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+            override fun afterTextChanged(s: Editable?) {}
+        })
+
 
         val messagesRef =
             FirebaseDatabase.getInstance("https://maad-bb9db-default-rtdb.asia-southeast1.firebasedatabase.app")
@@ -65,7 +82,7 @@ class ChatFragment : Fragment() {
         fetchChats()
     }
 
-    private fun fetchChats() {
+    private fun fetchChats(searchQuery: String = "") {
         val messagesRef =
             FirebaseDatabase.getInstance("https://maad-bb9db-default-rtdb.asia-southeast1.firebasedatabase.app")
                 .getReference("messagesZ")
@@ -126,7 +143,15 @@ class ChatFragment : Fragment() {
                                     lastMessage?.time,
                                     unreadCount
                                 )
-                                chatList.add(chat)
+//                                chatList.add(chat)
+                                // Filter chatList by searchQuery if it is not empty
+                                if (searchQuery.isBlank() || otherUsername.contains(
+                                        searchQuery,
+                                        true
+                                    )
+                                ) {
+                                    chatList.add(chat)
+                                }
                             }
                             // Sort chats by last message time
                             chatList.sortByDescending { it.lastMessageTime }
@@ -155,36 +180,6 @@ class ChatFragment : Fragment() {
         } else {
             "$otherUserId-$currentUserId"
         }
-    }
-
-    //Get the other user's name
-    private fun getUserName(
-        userId: String,
-        onSuccess: (String) -> Unit,
-        onError: (Exception) -> Unit
-    ) {
-        val usersRef =
-            FirebaseDatabase.getInstance("https://maad-bb9db-default-rtdb.asia-southeast1.firebasedatabase.app")
-                .getReference("userReg")
-        val query = usersRef.orderByChild("uid").equalTo(userId)
-        query.addListenerForSingleValueEvent(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                if (snapshot.exists()) {
-                    for (data in snapshot.children) {
-                        val username = data.child("name").value as String
-                        onSuccess(username)
-                        return
-                    }
-                } else {
-                    onError(Exception("No user found with ID $userId"))
-                }
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-                onError(error.toException())
-                Log.e(TAG, "Error getting chat messages", error.toException())
-            }
-        })
     }
 
 

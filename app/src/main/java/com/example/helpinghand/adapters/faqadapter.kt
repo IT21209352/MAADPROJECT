@@ -23,7 +23,7 @@ class faqadapter(private val faqs:MutableList<FAQ>): RecyclerView.Adapter<faqada
     class ViewHolder(itemView: View):RecyclerView.ViewHolder(itemView) {
 
         val faqText: TextView = itemView.findViewById(R.id.tvfaq)
-        val btndelete: Button = itemView.findViewById(R.id.dlete)
+        val btndelete: Button = itemView.findViewById(R.id.delete)
         val bntupdate: Button = itemView.findViewById(R.id.update)
         val faql:RelativeLayout = itemView.findViewById(R.id.faqLayout)
     }

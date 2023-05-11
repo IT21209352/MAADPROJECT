@@ -26,7 +26,7 @@ class ChatListAdapter(
     //private val currentUserId: String
 ):RecyclerView.Adapter<ChatListAdapter.ViewHolder>(){
 
-    private var chatList: List<ChatList> = mutableListOf()
+    var chatList: List<ChatList> = mutableListOf()
 
 
     fun updateData(newList: MutableList<ChatList>) {
