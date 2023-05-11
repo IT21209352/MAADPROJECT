@@ -53,6 +53,7 @@ class HomeFragment : Fragment() {
     private lateinit var postOwner : String
     private lateinit var postTitle: String
     private lateinit var postPosi: String
+    private lateinit var postOwnerID : String
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -108,6 +109,7 @@ class HomeFragment : Fragment() {
                         .addOnSuccessListener {
                             Toast.makeText(activity, "Comment has been saved...", Toast.LENGTH_SHORT).show()
                             Log.d(TAG, "DocumentSnapshot added with ID: $commentID")
+                            val lks = 0
                             val textMap2 = hashMapOf(
                                 "comments_comment" to texts,
                                 "comments_owner" to user,
@@ -115,7 +117,9 @@ class HomeFragment : Fragment() {
                                 "postID" to postID,
                                 "postOwner" to postOwner,
                                 "postTitle" to postTitle,
-                                "postPosi" to postPosi
+                                "postPosi" to postPosi,
+                                "likes" to lks,
+                                "postOwnerID" to postOwnerID
                             )
                             firebaseDatabase.child("post_comments").child(commentID).setValue(textMap2)
                             cmntInput.setText("")
@@ -209,5 +213,6 @@ class HomeFragment : Fragment() {
          postOwner =     arguments?.getString("postOwner") ?: ""
          postID = arguments?.getString("postID") ?: ""
         postPosi = arguments?.getString("postPosi") ?: ""
+        postOwnerID =  arguments?.getString("postOwnerID") ?: ""
     }
 }

@@ -49,10 +49,10 @@ class ProfileFragment : Fragment() {
         val dltProfileBtn = view?.findViewById<Button>(R.id.btnDeleteProfile)
         val userID = auth.currentUser?.uid
         val proPicView = view.findViewById<ImageView>(R.id.profilePicView)
-        val emailView = view.findViewById<TextView>(R.id.profileEmailView)
-        val nameView = view.findViewById<TextView>(R.id.profileNameView)
-        val addrsView = view.findViewById<TextView>(R.id.profileAddressView)
-        val phnView = view.findViewById<TextView>(R.id.profilePhoneView)
+        val emailView = view.findViewById<TextView>(R.id.randomEmailView)
+        val nameView = view.findViewById<TextView>(R.id.randomNameView)
+        val addrsView = view.findViewById<TextView>(R.id.randomAddressView)
+        val phnView = view.findViewById<TextView>(R.id.randomPhoneView)
         var resID : Int
 
         if (logoutBtn != null) {

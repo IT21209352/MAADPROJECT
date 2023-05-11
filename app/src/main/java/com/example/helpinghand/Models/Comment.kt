@@ -8,6 +8,7 @@ data class Comment(
     val postOwner : String ?= null,
     val postTitle : String ?= null,
     val postPosi: String ?= null,
-    val likes : Int ?=null
+    val likes : Int?=null,
+    val postOwnerID : String ?= null
 
     )

@@ -87,6 +87,7 @@ class AllPostsAdaptor(
             val postOwner = post.post_owner
             val postTitle= post.postDetail
             val postID = post.post_key
+            val postOwnerID = post.post_ownerID
             val homeFragment = HomeFragment()
             val bundle = Bundle()
 
@@ -94,6 +95,7 @@ class AllPostsAdaptor(
             bundle.putString("postTitle", postTitle)
             bundle.putString("postID", postID)
             bundle.putString("postPosi" , position.toString())
+            bundle.putString("postOwnerID" , postOwnerID)
 
             homeFragment.arguments = bundle
 

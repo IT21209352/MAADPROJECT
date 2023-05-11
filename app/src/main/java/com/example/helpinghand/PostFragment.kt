@@ -73,7 +73,8 @@ class PostFragment : Fragment() {
                             "postDetail" to postDetail,
                             "imageUrl" to uri.toString(),
                             "post_owner" to userId,
-                            "post_key" to postId
+                            "post_key" to postId,
+                            "post_ownerID" to  firebaseAuth.currentUser?.uid
                         )
                         firebaseDatabase.child(postId!!) // Use the push key as child node's key
                             .setValue(post)

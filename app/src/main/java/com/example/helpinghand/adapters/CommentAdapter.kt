@@ -22,6 +22,7 @@ import com.example.helpinghand.AllPostsFragmant
 import com.example.helpinghand.Models.Comment
 import com.example.helpinghand.Models.GlobalPostsList
 import com.example.helpinghand.R
+import com.example.helpinghand.ViewProfile
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.FirebaseDatabase
@@ -52,7 +53,7 @@ class CommentAdapter: RecyclerView.Adapter<CommentAdapter.MyViewHolder>() {
         holder.displayCommentOwner.text = currentitem.comments_owner
         holder.displayTheComment.text = currentitem.comments_comment
         holder.postTitleView.text = "@" + currentitem.postTitle
-        holder.cmntLikeBtn.text = "Like it ${currentitem.likes}"
+        holder.cmntLikeBtn.text = "Like it ${currentitem?.likes.toString()}"
         val activity = holder.itemView.context as Activity
 
         val color = colors[position % colors.size]
@@ -157,12 +158,31 @@ class CommentAdapter: RecyclerView.Adapter<CommentAdapter.MyViewHolder>() {
                 }
             }
 
-            displayCommentOwner.setOnClickListener {
+            postTitleView.setOnClickListener {
                 val fragmentManager = (itemView.context as FragmentActivity).supportFragmentManager
                 navToPost(comment,fragmentManager)
             }
+
+            displayCommentOwner.setOnClickListener {
+                val fragmentManager = (itemView.context as FragmentActivity).supportFragmentManager
+                navToRandomProfile(comment,fragmentManager)
+            }
+
         }
 
+        private fun navToRandomProfile(comment: Comment, fragmentManager: FragmentManager) {
+            val userID = comment.postOwnerID
+            val proFragment = ViewProfile()
+            val bundle = Bundle()
+
+            bundle.putString("PostOwnerID", userID)
+            proFragment.arguments = bundle
+
+            val transaction = fragmentManager.beginTransaction()
+            transaction.replace(R.id.fragmentContainerView, proFragment)
+            transaction.addToBackStack(null)
+            transaction.commit()
+        }
 
         private fun deleteComment(comment: Comment) {
             val theID = comment.comment_id

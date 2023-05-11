@@ -114,7 +114,7 @@ class AllPostsFragmant : Fragment(), AllPostsAdaptor.OnChatButtonClickListener {
                         val otherUserId = data.child("uid").value.toString() // get the user ID
                         val otherUserName = data.child("name").value.toString() // get the user's name
                         // display
-                        Log.d(TAG, "User ID: $otherUserId, Name: $otherUserName")
+                       // Log.d(TAG, "User ID: $otherUserId, Name: $otherUserName")
 
                         // Generate chat ID
                         val chatId = getChatId(currentUserId!!, otherUserId)
