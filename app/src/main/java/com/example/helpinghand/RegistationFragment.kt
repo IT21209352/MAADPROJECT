@@ -19,6 +19,8 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.FirebaseDatabase
 //import com.google.firebase.firestore.auth.User
 import com.google.firebase.ktx.Firebase
+import java.util.*
+import kotlin.random.Random
 
 
 class RegistationFragment : Fragment() {
@@ -124,8 +126,24 @@ class RegistationFragment : Fragment() {
 
     private fun addUserToDatabase(name: String, email: String, uid: String) {
 
+        val imageIds = arrayOf(
+            R.drawable.ss2,
+            R.drawable.ss3,
+            R.drawable.ss4,
+            R.drawable.ss5,
+            R.drawable.ss6,
+            R.drawable.ss7,
+            R.drawable.ss8,
+            R.drawable.ss9,
+            R.drawable.ss10,
+            R.drawable.ss11,
+            R.drawable.ss12,
+            R.drawable.ss13,
+        )
+        val selectedImageId = imageIds[Random.nextInt(imageIds.size)]
+
         val mDbRef = FirebaseDatabase.getInstance("https://maad-bb9db-default-rtdb.asia-southeast1.firebasedatabase.app").reference
-        mDbRef.child("userReg").child(uid).setValue(User(email,name,uid,"Address Hasn't Updated","Phone Hasn't Updated"))
+        mDbRef.child("userReg").child(uid).setValue(User(email,name,uid,"Address Hasn't Updated","Phone Hasn't Updated",selectedImageId))
 
 
     }

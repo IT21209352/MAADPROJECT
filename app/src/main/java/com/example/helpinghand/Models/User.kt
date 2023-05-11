@@ -8,6 +8,5 @@ data class User(
     val uid:String? = null,
     val address:String? = null,
     val phone:String? = null,
-    val profilePictureResourceId: Int? = null,
-    val profilePictureUri: Uri? = null
+    val profilePictureResourceId: Int? = null
 )

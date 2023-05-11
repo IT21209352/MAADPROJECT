@@ -52,6 +52,7 @@ class CommentAdapter: RecyclerView.Adapter<CommentAdapter.MyViewHolder>() {
         holder.displayCommentOwner.text = currentitem.comments_owner
         holder.displayTheComment.text = currentitem.comments_comment
         holder.postTitleView.text = "@" + currentitem.postTitle
+        holder.cmntLikeBtn.text = "Like it ${currentitem.likes}"
         val activity = holder.itemView.context as Activity
 
         val color = colors[position % colors.size]
@@ -106,10 +107,36 @@ class CommentAdapter: RecyclerView.Adapter<CommentAdapter.MyViewHolder>() {
                 }
             }
 
+            cmntLikeBtn.setOnClickListener {
+                var num = comment.likes ?: 0
+                num++
+
+                val textMap2 = hashMapOf(
+                    "comment_id" to comment.comment_id,
+                    "comments_comment" to comment.comments_comment,
+                    "comments_owner" to comment.comments_owner,
+                    "postID" to comment.postID,
+                    "postOwner" to comment.postOwner,
+                    "postPosi" to comment.postPosi,
+                    "postTitle" to comment.postTitle,
+                    "likes" to num
+
+                )
+                val firebaseDatabase = comment.comment_id?.let { it1 ->
+                    FirebaseDatabase
+                        .getInstance("https://maad-bb9db-default-rtdb.asia-southeast1.firebasedatabase.app")
+                        .getReference("comments").child("post_comments")
+                        .child(it1).setValue(textMap2)
+                }
+                Toast.makeText(activity , "Liked", Toast.LENGTH_SHORT).show()
+                editBtn.text = "Like it $num"
+            }
+
             editBtn.setOnClickListener {
                 val updtText = updtCmntInput.text.toString()
 
                 if (updtText!=null && updtText !=""){
+
                     val textMap2 = hashMapOf(
                         "comments_comment" to  updtText,
                         "comments_owner" to comment.comments_owner,
@@ -124,6 +151,7 @@ class CommentAdapter: RecyclerView.Adapter<CommentAdapter.MyViewHolder>() {
                     updtCmntInput.text.clear()
                     Toast.makeText(activity , "Comment updated...", Toast.LENGTH_SHORT).show()
 
+
                 }else{
                     Toast.makeText(activity , "You must enter something to update...", Toast.LENGTH_SHORT).show()
                 }
@@ -134,6 +162,7 @@ class CommentAdapter: RecyclerView.Adapter<CommentAdapter.MyViewHolder>() {
                 navToPost(comment,fragmentManager)
             }
         }
+
 
         private fun deleteComment(comment: Comment) {
             val theID = comment.comment_id

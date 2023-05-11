@@ -9,9 +9,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.bumptech.glide.Glide
 import com.example.helpinghand.Models.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -33,8 +35,8 @@ class ProfileFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         val view = inflater.inflate(R.layout.fragment_profile, container, false)
+
         return view
     }
 
@@ -46,11 +48,12 @@ class ProfileFragment : Fragment() {
         val edtProfile = view?.findViewById<Button>(R.id.btnEditProfile)
         val dltProfileBtn = view?.findViewById<Button>(R.id.btnDeleteProfile)
         val userID = auth.currentUser?.uid
-
+        val proPicView = view.findViewById<ImageView>(R.id.profilePicView)
         val emailView = view.findViewById<TextView>(R.id.profileEmailView)
         val nameView = view.findViewById<TextView>(R.id.profileNameView)
         val addrsView = view.findViewById<TextView>(R.id.profileAddressView)
         val phnView = view.findViewById<TextView>(R.id.profilePhoneView)
+
 
 
 
@@ -79,6 +82,11 @@ class ProfileFragment : Fragment() {
                     emailView.text = userObject?.email
                     addrsView.text = userObject?.address.toString()
                     phnView.text = userObject?.phone.toString()
+                    if (userObject != null) {
+                        Log.d(ContentValues.TAG, "-------------------------------------------------------------------${userObject.profilePictureResourceId}")
+                    }
+
+
                 }
 
                 override fun onCancelled(error: DatabaseError) {
@@ -95,6 +103,9 @@ class ProfileFragment : Fragment() {
                 emailView.text = userObject?.email
                 addrsView.text = userObject?.address.toString()
                 phnView.text = userObject?.phone.toString()
+                Glide.with(view)
+                    .load(userObject?.profilePictureResourceId)
+                    .into(proPicView)
 
             }
             override fun onCancelled(error: DatabaseError) {
@@ -177,8 +188,6 @@ class ProfileFragment : Fragment() {
                     .show()
             }
         }
-
-
     }
 
     fun isPhoneNumber(phoneNumber: String): Boolean {
