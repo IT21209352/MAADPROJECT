@@ -15,15 +15,17 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/tvMessages"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="70dp"
             android:background="@color/indigo_500"
             android:gravity="center"
-            android:text="@string/title_NewPost"
-            android:textSize="28sp"
-            android:textStyle="bold">
-
-        </TextView>
+            android:padding="10dp"
+            android:text="@string/tvbewpost"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
 
         <ImageView
@@ -33,7 +35,8 @@
             android:layout_gravity="center"
 
             android:layout_marginTop="15dp"
-            android:src="@drawable/new_post3" />
+            android:src="@drawable/new_post3"
+            app:srcCompat="@android:drawable/ic_menu_gallery" />
 
 
 

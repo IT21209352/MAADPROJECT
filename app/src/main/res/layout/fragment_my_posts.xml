@@ -10,16 +10,17 @@
     >
 
     <TextView
+        android:id="@+id/tvMessages"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_gravity="center_horizontal"
+        android:layout_height="70dp"
         android:background="@color/indigo_500"
         android:gravity="center"
+        android:padding="10dp"
         android:text="@string/title_myposts"
-        android:textSize="28sp"
-        android:textStyle="bold">
-
-    </TextView>
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:textStyle="bold" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewP"

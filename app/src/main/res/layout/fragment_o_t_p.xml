@@ -28,40 +28,30 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="@string/txt_otpsend"
+        android:text="@string/newpassrest"
         android:textColor="@color/red"
         android:textStyle="bold|italic" />
 
     <EditText
-        android:id="@+id/edtTxtUserEmail"
+        android:id="@+id/otpEmailInput"
         android:layout_width="@dimen/width_inputbutton"
         android:layout_height="@dimen/height_inputbutton"
         android:layout_gravity="center"
         android:width="@dimen/width_inputbutton"
-        android:autofillHints="@string/txt_username"
+        android:autofillHints="@string/entermail"
         android:ems="10"
         android:gravity="center|center_horizontal|center_vertical"
-        android:hint="@string/txt_hint_otp"
-        android:inputType="textPersonName" />
+        android:hint="@string/entermail"
+        android:inputType="textWebEmailAddress" />
 
     <Button
-        android:id="@+id/button_register"
+        android:id="@+id/otpSubmitBtn"
         android:layout_width="@dimen/width_inputbutton"
         android:layout_height="@dimen/height_inputbutton"
         android:layout_gravity="center"
         android:width="@dimen/width_inputbutton"
         android:gravity="center|center_horizontal|center_vertical"
         android:text="@string/txt_btn_submit"
-        android:textSize="@dimen/button_textSize" />
-
-    <Button
-        android:id="@+id/button_signup"
-        android:layout_width="@dimen/width_inputbutton"
-        android:layout_height="@dimen/height_inputbutton"
-        android:layout_gravity="center"
-        android:width="@dimen/width_inputbutton"
-        android:gravity="center|center_horizontal|center_vertical"
-        android:text="@string/txt_btn_resend"
         android:textSize="@dimen/button_textSize" />
 
 </LinearLayout>

@@ -4,23 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/frameLayout3"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     tools:context=".ProfileFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
-
         <TextView
+            android:id="@+id/tvMessages"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="70dp"
             android:background="@color/indigo_500"
+            android:gravity="center"
             android:padding="10dp"
             android:text="@string/userProfile"
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="22sp" />
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
 
         <ImageView
@@ -46,46 +48,114 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Headline"
             android:textColor="@color/black" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
         <TextView
             android:id="@+id/profileNameView"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/imageView_profile_dp"
             android:layout_gravity="center"
-            android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
+            android:layout_weight="0.5"
             android:gravity="center"
             android:hint="Name"
+            android:minHeight="50dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/profileNameUpdateInput"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:layout_weight="0.6"
+            android:autofillHints="@string/cpcmt"
+            android:ems="10"
+            android:gravity="center"
+            android:hint="@string/cpcmt"
+            android:inputType="textPersonName"
+            android:minHeight="50dp"
+            android:textFontWeight="5"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
 
         <TextView
             android:id="@+id/profileAddressView"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/imageView_profile_dp"
             android:layout_gravity="center"
-            android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
+            android:layout_weight="0.5"
             android:gravity="center"
-            android:hint="Name"
+            android:hint="@string/addrs"
+            android:minHeight="50dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/profileAddUpdateInput"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:layout_weight="0.6"
+            android:autofillHints="@string/cpcmt"
+            android:ems="10"
+            android:gravity="center"
+            android:hint="@string/cpcmt"
+            android:inputType="textPersonName"
+            android:minHeight="50dp"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
 
         <TextView
             android:id="@+id/profilePhoneView"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/imageView_profile_dp"
             android:layout_gravity="center"
-            android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
+            android:layout_weight="0.5"
             android:gravity="center"
-            android:hint="Name"
+            android:hint="@string/phone"
+            android:minHeight="50dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textSize="20sp" />
 
+        <EditText
+            android:id="@+id/profilePhoneUpdateInput"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:layout_weight="0.6"
+            android:autofillHints="@string/cpcmt"
+            android:ems="10"
+            android:gravity="center"
+            android:hint="@string/cpcmt"
+            android:inputType="textPersonName"
+            android:minHeight="50dp"
+            android:textSize="14sp" />
 
+    </LinearLayout>
 
 <!--        <Button-->
 <!--            android:id="@+id/btnNotification"-->
@@ -109,28 +179,25 @@
 <!--            android:drawableTint="@color/white"-->
 <!--            android:text="@string/ViewProfile" />-->
 
-<!--        <Button-->
-<!--            android:id="@+id/btnEditProfile"-->
-<!--            android:layout_width="250dp"-->
-<!--            android:layout_height="50dp"-->
-<!--            android:layout_gravity="center"-->
-<!--            android:layout_marginTop="10dp"-->
-<!--            android:layout_marginBottom="10dp"-->
-<!--            android:background="@color/blue_200"-->
-<!--            android:backgroundTint="@color/blue_200"-->
-<!--            android:drawableTint="@color/white"-->
-<!--            android:text="@string/EditProfile" />-->
+        <Button
+            android:id="@+id/btnEditProfile"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_gravity="center"
+            android:text="@string/EditProfile" />
 
-<!--        <Button-->
-<!--            android:id="@+id/btnDeleteProfile"-->
-<!--            android:layout_width="250dp"-->
-<!--            android:layout_height="50dp"-->
-<!--            android:layout_gravity="center"-->
-<!--            android:layout_marginTop="10dp"-->
-<!--            android:layout_marginBottom="10dp"-->
-<!--            android:backgroundTint="@color/indigo_500"-->
-<!--            android:drawableTint="@color/white"-->
-<!--            android:text="@string/deleteProfile" />-->
+        <Button
+            android:id="@+id/btnDeleteProfile"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:backgroundTint="@color/indigo_500"
+            android:drawableTint="@color/white"
+            android:text="@string/deleteProfile" />
 
         <Button
             android:id="@+id/main_logout_btn"

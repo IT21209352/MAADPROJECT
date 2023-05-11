@@ -37,7 +37,7 @@
         />
 
     <EditText
-        android:id="@+id/edtTxtUserEmail"
+        android:id="@+id/otpEmailInput"
         android:layout_width="@dimen/width_inputbutton"
         android:layout_height="@dimen/height_inputbutton"
         android:layout_gravity="center"
@@ -103,7 +103,7 @@
         android:inputType="textPassword" />
 
     <Button
-        android:id="@+id/button_register"
+        android:id="@+id/otpSubmitBtn"
         android:layout_width="@dimen/width_inputbutton"
         android:layout_height="@dimen/height_inputbutton"
         android:layout_gravity="center"

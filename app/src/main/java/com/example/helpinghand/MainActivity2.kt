@@ -38,8 +38,21 @@ class MainActivity2 : AppCompatActivity() {
         val PostsBtn:ImageView = findViewById(R.id.imgBtnNewPost)
         val MyPostsBtn:ImageView = findViewById(R.id.imgBtnMyPosts)
         val ProfileBtn:ImageView = findViewById(R.id.imgBtnProfile)
+        HomeBtn.setImageResource(R.drawable.home_selected)
+        ChatBtn.setImageResource(R.drawable.chat_notselected)
+        PostsBtn.setImageResource(R.drawable.newpost_notselected)
+        MyPostsBtn.setImageResource(R.drawable.posts_notselected)
+        ProfileBtn.setImageResource(R.drawable.profile_noselected)
+
 
         HomeBtn.setOnClickListener {
+
+            HomeBtn.setImageResource(R.drawable.home_selected)
+            ChatBtn.setImageResource(R.drawable.chat_notselected)
+            PostsBtn.setImageResource(R.drawable.newpost_notselected)
+            MyPostsBtn.setImageResource(R.drawable.posts_notselected)
+            ProfileBtn.setImageResource(R.drawable.profile_noselected)
+
             supportFragmentManager.beginTransaction().apply {
                 replace(R.id.fragmentContainerView,AllPostsFragmant())
                 commit()
@@ -47,6 +60,13 @@ class MainActivity2 : AppCompatActivity() {
         }
 
         ProfileBtn.setOnClickListener {
+
+            HomeBtn.setImageResource(R.drawable.home_notselected)
+            ChatBtn.setImageResource(R.drawable.chat_notselected)
+            PostsBtn.setImageResource(R.drawable.newpost_notselected)
+            MyPostsBtn.setImageResource(R.drawable.posts_notselected)
+            ProfileBtn.setImageResource(R.drawable.profile_selected)
+
             supportFragmentManager.beginTransaction().apply {
                 replace(R.id.fragmentContainerView,ProfileFragment())
                 commit()
@@ -54,6 +74,14 @@ class MainActivity2 : AppCompatActivity() {
         }
 
         PostsBtn.setOnClickListener {
+
+            HomeBtn.setImageResource(R.drawable.home_notselected)
+            ChatBtn.setImageResource(R.drawable.chat_notselected)
+            PostsBtn.setImageResource(R.drawable.newpost_selected)
+            MyPostsBtn.setImageResource(R.drawable.posts_notselected)
+            ProfileBtn.setImageResource(R.drawable.profile_noselected)
+
+
             supportFragmentManager.beginTransaction().apply {
                 replace(R.id.fragmentContainerView,PostFragment())
                 commit()
@@ -61,6 +89,14 @@ class MainActivity2 : AppCompatActivity() {
         }
 
         MyPostsBtn.setOnClickListener {
+
+            HomeBtn.setImageResource(R.drawable.home_notselected)
+            ChatBtn.setImageResource(R.drawable.chat_notselected)
+            PostsBtn.setImageResource(R.drawable.newpost_notselected)
+            MyPostsBtn.setImageResource(R.drawable.posts_selected)
+            ProfileBtn.setImageResource(R.drawable.profile_noselected)
+
+
             supportFragmentManager.beginTransaction().apply {
                 replace(R.id.fragmentContainerView,myPostsFragment())
                 commit()
@@ -68,6 +104,13 @@ class MainActivity2 : AppCompatActivity() {
         }
 
         ChatBtn.setOnClickListener {
+
+            HomeBtn.setImageResource(R.drawable.home_notselected)
+            ChatBtn.setImageResource(R.drawable.chat_selected)
+            PostsBtn.setImageResource(R.drawable.newpost_notselected)
+            MyPostsBtn.setImageResource(R.drawable.posts_notselected)
+            ProfileBtn.setImageResource(R.drawable.profile_noselected)
+
             supportFragmentManager.beginTransaction().apply {
                 replace(R.id.fragmentContainerView,ChatFragment())
                 commit()

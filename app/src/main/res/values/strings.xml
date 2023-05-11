@@ -88,5 +88,9 @@
     <string name="updateCMnt">UPDATE</string>
     <string name="lknBtn">Like IT</string>
  <string name="txt_name">Enter your name</string>
+    <string name="addrs">Address</string>
+    <string name="newpassrest">" Please enter your email below. If it is a valid email, a password reset link will be sent to it."</string>
+    <string name="entermail">Enter Email Here</string>
+    <string name="tvbewpost">Create a Post</string>
 
 </resources>
