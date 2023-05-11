@@ -202,12 +202,7 @@ class CommentAdapter: RecyclerView.Adapter<CommentAdapter.MyViewHolder>() {
             }else{
                   Log.d(TAG, "------------------------------------------------Post not found")
             }
-
         }
     }
-
-
 }
-//  Log.d(TAG, "-------------------------------------------------------- ${GlobalPostsList.getPosts()}")
-
 
