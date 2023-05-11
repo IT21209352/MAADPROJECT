@@ -53,9 +53,7 @@ class ProfileFragment : Fragment() {
         val nameView = view.findViewById<TextView>(R.id.profileNameView)
         val addrsView = view.findViewById<TextView>(R.id.profileAddressView)
         val phnView = view.findViewById<TextView>(R.id.profilePhoneView)
-
-
-
+        var resID : Int
 
         if (logoutBtn != null) {
             logoutBtn.setOnClickListener {
@@ -82,17 +80,19 @@ class ProfileFragment : Fragment() {
                     emailView.text = userObject?.email
                     addrsView.text = userObject?.address.toString()
                     phnView.text = userObject?.phone.toString()
+                    resID = userObject?.profilePictureResourceId!!
+
                     if (userObject != null) {
                         Log.d(ContentValues.TAG, "-------------------------------------------------------------------${userObject.profilePictureResourceId}")
                     }
-
 
                 }
 
                 override fun onCancelled(error: DatabaseError) {
                     Log.d(ContentValues.TAG, "getUser:onCancelled", error.toException())
                 }
-            })
+            }
+            )
         }
 
         userRef?.addListenerForSingleValueEvent(object : ValueEventListener {
@@ -113,9 +113,8 @@ class ProfileFragment : Fragment() {
             }
         })
 
-
-
         if (edtProfile != null) {
+
             edtProfile.setOnClickListener {
                 val updtName = view.findViewById<EditText>(R.id.profileNameUpdateInput)
                 val updtAddrs = view.findViewById<EditText>(R.id.profileAddUpdateInput)
@@ -129,8 +128,7 @@ class ProfileFragment : Fragment() {
                     Toast.makeText(activity, "User name can not be empty...", Toast.LENGTH_LONG).show()
                 }else{
                     if (isPhoneNumber(phone)){
-                        Log.d(ContentValues.TAG, "--------------------------------------$name , $addrs, $phone")
-
+                    //    Log.d(ContentValues.TAG, "--------------------------------------$name , $addrs, $phone")
 
                         val textMap2 = hashMapOf(
                             "address" to addrs,
@@ -139,8 +137,9 @@ class ProfileFragment : Fragment() {
                             "phone" to phone,
                             "uid" to auth.currentUser?.uid.toString(),
                         )
+
                         if (userRef != null) {
-                            userRef.setValue(textMap2).addOnSuccessListener{
+                            userRef.updateChildren(textMap2 as Map<String, Any>).addOnSuccessListener{
                                 Toast.makeText(activity, "Profile Updated", Toast.LENGTH_LONG).show()
                                 updtName.text.clear()
                                 updtAddrs.text.clear()
