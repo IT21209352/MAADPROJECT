@@ -127,7 +127,7 @@ class CommentAdapter: RecyclerView.Adapter<CommentAdapter.MyViewHolder>() {
                     FirebaseDatabase
                         .getInstance("https://maad-bb9db-default-rtdb.asia-southeast1.firebasedatabase.app")
                         .getReference("comments").child("post_comments")
-                        .child(it1).setValue(textMap2)
+                        .child(it1).updateChildren(textMap2 as Map<String, Any>)
                 }
                 Toast.makeText(activity , "Liked", Toast.LENGTH_SHORT).show()
                 editBtn.text = "Like it $num"
@@ -147,7 +147,7 @@ class CommentAdapter: RecyclerView.Adapter<CommentAdapter.MyViewHolder>() {
                         FirebaseDatabase
                             .getInstance("https://maad-bb9db-default-rtdb.asia-southeast1.firebasedatabase.app")
                             .getReference("comments").child("post_comments")
-                            .child(it1).setValue(textMap2)
+                            .child(it1).updateChildren(textMap2 as Map<String, Any>)
                     }
                     updtCmntInput.text.clear()
                     Toast.makeText(activity , "Comment updated...", Toast.LENGTH_SHORT).show()
@@ -171,17 +171,22 @@ class CommentAdapter: RecyclerView.Adapter<CommentAdapter.MyViewHolder>() {
         }
 
         private fun navToRandomProfile(comment: Comment, fragmentManager: FragmentManager) {
-            val userID = comment.postOwnerID
-            val proFragment = ViewProfile()
-            val bundle = Bundle()
 
-            bundle.putString("PostOwnerID", userID)
-            proFragment.arguments = bundle
+            val userID = comment.cmmntOwnerID
+            val auth = FirebaseAuth.getInstance()
+            val uID = auth.currentUser?.uid
+            if (userID != uID){
+                val proFragment = ViewProfile()
+                val bundle = Bundle()
 
-            val transaction = fragmentManager.beginTransaction()
-            transaction.replace(R.id.fragmentContainerView, proFragment)
-            transaction.addToBackStack(null)
-            transaction.commit()
+                bundle.putString("PostOwnerID", userID)
+                proFragment.arguments = bundle
+
+                val transaction = fragmentManager.beginTransaction()
+                transaction.replace(R.id.fragmentContainerView, proFragment)
+                transaction.addToBackStack(null)
+                transaction.commit()
+            }
         }
 
         private fun deleteComment(comment: Comment) {

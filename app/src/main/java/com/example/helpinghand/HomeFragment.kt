@@ -110,6 +110,7 @@ class HomeFragment : Fragment() {
                             Toast.makeText(activity, "Comment has been saved...", Toast.LENGTH_SHORT).show()
                             Log.d(TAG, "DocumentSnapshot added with ID: $commentID")
                             val lks = 0
+                            val myID = auth.currentUser?.uid
                             val textMap2 = hashMapOf(
                                 "comments_comment" to texts,
                                 "comments_owner" to user,
@@ -119,7 +120,8 @@ class HomeFragment : Fragment() {
                                 "postTitle" to postTitle,
                                 "postPosi" to postPosi,
                                 "likes" to lks,
-                                "postOwnerID" to postOwnerID
+                                "postOwnerID" to postOwnerID,
+                                "cmmntOwnerID" to myID
                             )
                             firebaseDatabase.child("post_comments").child(commentID).setValue(textMap2)
                             cmntInput.setText("")
