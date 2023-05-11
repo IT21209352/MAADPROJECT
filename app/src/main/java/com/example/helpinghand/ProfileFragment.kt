@@ -7,12 +7,10 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import com.bumptech.glide.Glide
 import com.example.helpinghand.Models.User
 import com.google.firebase.auth.FirebaseAuth
@@ -54,6 +52,16 @@ class ProfileFragment : Fragment() {
         val addrsView = view.findViewById<TextView>(R.id.randomAddressView)
         val phnView = view.findViewById<TextView>(R.id.randomPhoneView)
         var resID : Int
+        val btnFaq = view.findViewById<Button>(R.id.btnFaq)
+
+        btnFaq.setOnClickListener {
+            val fragment: FaqFragment = FaqFragment()
+            val fragmentManager: FragmentManager = requireActivity().supportFragmentManager
+            val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
+            fragmentTransaction.replace(R.id.fragmentContainerView, fragment);
+            fragmentTransaction.addToBackStack(null);
+            fragmentTransaction.commit();
+        }
 
         if (logoutBtn != null) {
             logoutBtn.setOnClickListener {

@@ -199,6 +199,17 @@
             android:text="@string/deleteProfile" />
 
         <Button
+            android:id="@+id/btnFaq"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:backgroundTint="@color/indigo_500"
+            android:drawableTint="@color/white"
+            android:text="@string/faq" />
+
+        <Button
             android:id="@+id/main_logout_btn"
             android:layout_width="250dp"
             android:layout_height="50dp"
