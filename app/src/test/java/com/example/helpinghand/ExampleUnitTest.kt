@@ -205,3 +205,19 @@ class chatListTest{
 
     }
 }
+
+class notesTest{
+
+    @Test
+    fun testNotes(){
+        val faqId="456"
+        val userid="678"
+        val faq="I want to meet the doctor"
+        val faqs=FAQ(faqId,userid,faq)
+        assertEquals(faqId,faqs.faqid)
+        assertEquals(userid,faqs.userid)
+        assertEquals(faq,faqs.faq)
+    }
+
+}
+

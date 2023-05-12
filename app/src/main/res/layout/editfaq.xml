@@ -10,14 +10,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:text="Edit FAQ"
+        android:text="Edit Note"
         android:textSize="18sp" />
 
     <EditText
         android:id="@+id/editFaqText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter FAQ text here"
+        android:hint="Enter note here"
         android:textSize="16sp" />
 
     <Button
@@ -25,6 +25,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="Update FAQ" />
+        android:text="Update Note" />
 
 </LinearLayout>

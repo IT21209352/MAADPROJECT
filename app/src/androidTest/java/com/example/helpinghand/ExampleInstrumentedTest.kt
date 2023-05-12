@@ -224,6 +224,10 @@ class ChatFragmentNavigation {
         //Check whether the correct fragment is replaced
         onView(withId(R.id.fragmentContainerView)).check(ViewAssertions.matches(isDisplayed()))
     }
+
+
+
+
 }
 
 

@@ -57,15 +57,15 @@ class FaqFragment : Fragment() {
                         .addOnCompleteListener { task ->
                             if (task.isSuccessful) {
                                 eidt.setText("")
-                                Toast.makeText(requireContext(), "FAQ added!", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(requireContext(), "Note added!", Toast.LENGTH_SHORT).show()
                                 faqadapter.notifyDataSetChanged() // Notify adapter that the data has changed
                             } else {
-                                Toast.makeText(requireContext(), "Failed to add FAQ", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(requireContext(), "Failed to add Note", Toast.LENGTH_SHORT).show()
                             }
                         }
                 }
             } else {
-                Toast.makeText(requireContext(), "Please enter a FAQ", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Please enter a Note", Toast.LENGTH_SHORT).show()
             }
 
         }
