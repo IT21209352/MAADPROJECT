@@ -17,14 +17,14 @@ import org.w3c.dom.Text
 
 class ChatMessagesActivity : AppCompatActivity() {
 
-    private lateinit var mAuth: FirebaseAuth
-    private lateinit var mDbRef: DatabaseReference
+    lateinit var mAuth: FirebaseAuth
+    lateinit var mDbRef: DatabaseReference
     private lateinit var chatId: String
     private lateinit var currentUserId: String
     private lateinit var otherUserId: String
     private lateinit var currentUserName: String
     private lateinit var otherUserName: String
-    private lateinit var messageEditText: EditText
+    lateinit var messageEditText: EditText
 
     private lateinit var messageRecyclerView: RecyclerView
     private lateinit var messageList: ArrayList<Messages>
@@ -123,7 +123,7 @@ class ChatMessagesActivity : AppCompatActivity() {
 
     }
 
-    private fun sendMessage(message: String) {
+    fun sendMessage(message: String) {
         val timestamp = System.currentTimeMillis().toString()
         //val messageId = mDbRef.child("messages/$chatId").push().key
 
