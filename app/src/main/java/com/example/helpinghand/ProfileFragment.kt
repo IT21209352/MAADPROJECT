@@ -86,8 +86,20 @@ class ProfileFragment : Fragment() {
                     val userObject = snapshot.getValue(User::class.java)
                     nameView.text = userObject?.name
                     emailView.text = userObject?.email
-                    addrsView.text = userObject?.address.toString()
-                    phnView.text = userObject?.phone.toString()
+
+                        if(userObject?.address.toString()==null){
+                            addrsView.text = "Address"
+                        }else{
+                            addrsView.text =  userObject?.address.toString()
+                        }
+
+                    if(userObject?.phone.toString() == null){
+                            phnView.text ="Phone Number"
+                    }else{
+                        phnView.text = userObject?.phone.toString()
+                    }
+
+
                     resID = userObject?.profilePictureResourceId!!
 
                     if (userObject != null) {
