@@ -1,27 +1,26 @@
 package com.example.helpinghand.adapters
 
-import android.content.ContentValues
 import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.cardview.widget.CardView
 import androidx.core.graphics.ColorUtils
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.helpinghand.HomeFragment
+import com.example.helpinghand.Models.CartItem
 import com.example.helpinghand.Models.GlobalPostsList
 import com.example.helpinghand.Models.Post
+import com.example.helpinghand.Models.ShoppingCart
 import com.example.helpinghand.R
 import com.example.helpinghand.ViewProfile
-import com.example.helpinghand.myPostsFragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -38,6 +37,8 @@ class AllPostsAdaptor(
 
         val postImage: ImageView = itemView.findViewById(R.id.allPostImageView)
         val postDetail: TextView = itemView.findViewById(R.id.allPostTextView)
+        val medName: TextView = itemView.findViewById(R.id.medNameView)
+        val medPrice: TextView = itemView.findViewById(R.id.medPriceView)
         val helpbtn: Button = itemView.findViewById(R.id.allPostBtn)
         val postCardView : CardView = itemView.findViewById(R.id.allPostCardView)
         val cmntBtn: Button = itemView.findViewById(R.id.allPostCmntBtn)
@@ -54,6 +55,8 @@ class AllPostsAdaptor(
         var auth: FirebaseAuth = Firebase.auth
 
         GlobalPostsList.setPosts(posts)
+
+        var isadded = false
 
         val post = posts[position]
 
@@ -74,6 +77,8 @@ class AllPostsAdaptor(
 
         holder.postDetail.text = post.postDetail
         holder.postOwner.text = post.post_owner
+        holder.medName.text = post.medName
+        holder.medPrice.text = "Rs " + post.medPrice.toString()
 
         if (post.post_owner == crntUserEmail){
            holder.cmntBtn.visibility = View.INVISIBLE
@@ -84,27 +89,16 @@ class AllPostsAdaptor(
         }
 
         holder.cmntBtn.setOnClickListener {
-         //   Log.d(ContentValues.TAG, "this is the related comment $position")
-            val postOwner = post.post_owner
-            val postTitle= post.postDetail
-            val postID = post.post_key
-            val postOwnerID = post.post_ownerID
-            val homeFragment = HomeFragment()
-            val bundle = Bundle()
 
-            bundle.putString("postOwner", postOwner)
-            bundle.putString("postTitle", postTitle)
-            bundle.putString("postID", postID)
-            bundle.putString("postPosi" , position.toString())
-            bundle.putString("postOwnerID" , postOwnerID)
+            val cartItem = post.medPrice?.let { it1 -> CartItem("${post.medName}", it1,1) }
 
-            homeFragment.arguments = bundle
-
-            val transaction = fragmentManager.beginTransaction()
-            transaction.replace(R.id.fragmentContainerView, homeFragment)
-            transaction.addToBackStack(null)
-            transaction.commit()
-
+            if (cartItem != null && !isadded) {
+                ShoppingCart.addItem(cartItem)
+                Toast.makeText(context, "Medicine added to the cart", Toast.LENGTH_SHORT).show()
+                isadded = true
+            }else{
+                Toast.makeText(context, "Medicine already in the cart", Toast.LENGTH_SHORT).show()
+            }
         }
 
         holder.helpbtn.setOnClickListener {
