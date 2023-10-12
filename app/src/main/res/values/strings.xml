@@ -87,5 +87,20 @@
     <string name="svmecmnt">Edit</string>
     <string name="updateCMnt">UPDATE</string>
     <string name="lknBtn">Like IT</string>
+    <string name="txt_name">Enter your name</string>
+    <string name="addrs">Address</string>
+    <string name="newpassrest">" Please enter your email below. If it is a valid email, a password reset link will be sent to it."</string>
+    <string name="entermail">Enter Email Here</string>
+    <string name="tvbewpost">Create a Post</string>
+    <string name="cartadd">Add to Cart</string>
+    <string name="desc">Enter the Description Here</string>
+    <string name="addtomarket">Add a Medicine to the Market Feed</string>
+    <string name="pricve">Enter the Price Here</string>
+    <string name="medname">Enter Medcine Name Here</string>
+    <string name="mednam">Medicine Name</string>
+    <string name="meddes">Description</string>
+    <string name="prio">Price</string>
+    <string name="medsc">Description</string>
+    <string name="asd">Description</string>
 
 </resources>

@@ -4,8 +4,6 @@ import androidx.fragment.app.testing.FragmentScenario
 import androidx.lifecycle.MutableLiveData
 import com.example.helpinghand.adapters.CommentAdapter
 import org.junit.Test
-import com.example.helpinghand.Models.Comment
-import com.example.helpinghand.Models.CommentViewModel
 import com.example.helpinghand.Repository.CommentRepository
 import org.junit.Assert.assertEquals
 import org.junit.Before
@@ -15,7 +13,7 @@ import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.ext.junit.rules.activityScenarioRule
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.example.helpinghand.Models.Post
+import com.example.helpinghand.Models.*
 import org.junit.After
 import org.junit.runner.RunWith
 import org.junit.Assert.*
@@ -125,4 +123,101 @@ class PostTest {
     }
 }
 
+
+class ProfileDataTest {
+
+    @Test
+    fun testProfileDataConstructor() {
+        val profileData = ProfileData("Test User", "testuser@example.com", "12:00", "123")
+
+        assertEquals("Test User", profileData.loggedUserName)
+        assertEquals("testuser@example.com", profileData.loggedUserEmail)
+        assertEquals("12:00", profileData.loggedUserTime)
+        assertEquals("123", profileData.loggedUserID)
+    }
+
+    @Test
+    fun testProfileDataGetters() {
+        val profileData = ProfileData("Test User", "testuser@example.com", "12:00", "123")
+
+        assertEquals("Test User", profileData.loggedUserName)
+        assertEquals("testuser@example.com", profileData.loggedUserEmail)
+        assertEquals("12:00", profileData.loggedUserTime)
+        assertEquals("123", profileData.loggedUserID)
+    }
+
+    @Test
+    fun testProfileDataEquals() {
+        val profileData1 = ProfileData("Test User", "testuser@example.com", "12:00", "123")
+        val profileData2 = ProfileData("Test User", "testuser@example.com", "12:00", "123")
+        val profileData3 = ProfileData("Another User", "anotheruser@example.com", "13:00", "456")
+
+        assertEquals(profileData1, profileData2)
+        assert(profileData1 != profileData3)
+    }
+}
+
+class MessageTest{
+
+    @Test
+    fun testMessages(){
+        val chatId = "1234"
+        val messageId = "345"
+        val messageText = "Hello"
+        val senderId = "sender123"
+        val receiverId = "receiver123"
+        val time = System.currentTimeMillis()
+        val isRead = false
+
+        val message = Messages(chatId,messageId,messageText,senderId,receiverId,time,isRead)
+
+        assertEquals(chatId, message.chatId)
+        assertEquals(messageId, message.messageId)
+        assertEquals(messageText, message.message)
+        assertEquals(senderId, message.senderId)
+        assertEquals(receiverId, message.receiverId)
+        assertEquals(time, message.time)
+        assertEquals(isRead, message.isRead)
+
+    }
+}
+
+class chatListTest{
+
+    @Test
+    fun testChatList(){
+
+        val chatId = "1234"
+        val otherUserId =  "125"
+        val chatName = "Adam"
+        val lastMessage = "Hello!"
+        val lastMessageTime = System.currentTimeMillis()
+        val unreadCount = 3
+
+        val chat = ChatList(chatId, otherUserId, chatName, lastMessage, lastMessageTime, unreadCount)
+
+        assertEquals(chatId, chat.chatId)
+        assertEquals(otherUserId, chat.otherUserId)
+        assertEquals(chatName, chat.chatName)
+        assertEquals(lastMessage, chat.lastMessage)
+        assertEquals(lastMessageTime, chat.lastMessageTime)
+        assertEquals(unreadCount, chat.unreadCount)
+
+    }
+}
+
+class notesTest{
+
+    @Test
+    fun testNotes(){
+        val faqId="456"
+        val userid="678"
+        val faq="I want to meet the doctor"
+        val faqs=FAQ(faqId,userid,faq)
+        assertEquals(faqId,faqs.faqid)
+        assertEquals(userid,faqs.userid)
+        assertEquals(faq,faqs.faq)
+    }
+
+}
 

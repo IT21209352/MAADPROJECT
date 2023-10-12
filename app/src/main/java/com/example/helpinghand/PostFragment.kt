@@ -60,9 +60,11 @@ class PostFragment : Fragment() {
 
     private fun uploadPost() {
         val postDetail = binding.postDetailTextView.text.toString()
-        val userId = firebaseAuth.currentUser?.email  /* */
+        val medPrice =Integer.parseInt( binding.postPrice.text.toString())
+        val userId = firebaseAuth.currentUser?.email
+        val medName = binding.medName.text.toString()
 
-        if (userId != null && imageUri != null && postDetail.isNotEmpty()) {
+        if (userId != null && imageUri != null && postDetail.isNotEmpty() && medPrice > 0) {
             val imageRef = storageReference.child("${System.currentTimeMillis()}.jpg")
             imageRef.putFile(imageUri!!)
                 .addOnSuccessListener { taskSnapshot ->
@@ -73,7 +75,10 @@ class PostFragment : Fragment() {
                             "postDetail" to postDetail,
                             "imageUrl" to uri.toString(),
                             "post_owner" to userId,
-                            "post_key" to postId
+                            "post_key" to postId,
+                            "post_ownerID" to  firebaseAuth.currentUser?.uid,
+                            "medName" to medName,
+                            "medPrice" to medPrice
                         )
                         firebaseDatabase.child(postId!!) // Use the push key as child node's key
                             .setValue(post)
@@ -81,7 +86,7 @@ class PostFragment : Fragment() {
 
                                 Toast.makeText(
                                     requireContext(),
-                                    "Post uploaded successfully",
+                                    "Medicine uploaded successfully",
                                     Toast.LENGTH_SHORT
                                 ).show()
 
@@ -104,7 +109,7 @@ class PostFragment : Fragment() {
         } else {
             Toast.makeText(
                 requireContext(),
-                "Please select an image and enter a post detail",
+                "Please select an image and enter all the details of the medicine",
                 Toast.LENGTH_SHORT
             ).show()
         }

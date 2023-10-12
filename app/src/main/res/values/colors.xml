@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
@@ -7,23 +6,26 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="red">#FF0000</color>
-    <color name="orange">#FF8800</color>
-    <color name="orange_light">#FFDE9C</color>
-    <color name="blue_200">#6714ff</color>
-    <color name="blue_300">#5e17e2</color>
-    <color name="orange_300">#FF9924</color>
+    <color name="red">#FFBF360C</color>
+    <color name="orange">#FFF57F17</color>
+    <color name="orange_light">#FFFFB74D</color>
+    <color name="blue_200">#7A4BFF</color>
+    <color name="blue_300">#6E00FF</color>
+    <color name="orange_300">#FFB300</color>
 
+    <color name="color1">#FFD7CCC8</color>
+    <color name="color2">#FFE0B2A8</color>
+    <color name="color3">#FFCE93D8</color>
+    <color name="color4">#FFB39DDB</color>
+    <color name="color5">#FF9FA8DA</color>
+    <color name="color6">#FF90CAF9</color>
+    <color name="color7">#FF81D4FA</color>
+    <color name="color8">#FF80DEEA</color>
+    <color name="color9">#FFA5D6A7</color>
+    <color name="color10">#FFC5E1A5</color>
 
-    <color name="color1">#FFCDD2</color>
-    <color name="color2">#F8BBD0</color>
-    <color name="color3">#E1BEE7</color>
-    <color name="color4">#D1C4E9</color>
-    <color name="color5">#C5CAE9</color>
-    <color name="color6">#BBDEFB</color>
-    <color name="color7">#B3E5FC</color>
-    <color name="color8">#B2EBF2</color>
-    <color name="color9">#B2DFDB</color>
-    <color name="color10">#C8E6C9</color>
-
+    <color name="indigo_500">#5C6BC0</color>
+    <color name="indigo_700">#3949AB</color>
+    <color name="amber_500">#FFC107</color>
+    <color name="amber_700">#FFA000</color>
 </resources>

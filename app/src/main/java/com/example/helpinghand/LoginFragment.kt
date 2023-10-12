@@ -43,7 +43,7 @@ class LoginFragment : Fragment() {
             }
         }
 
-        val loginButton = view.findViewById<Button>(R.id.button_register)
+        val loginButton = view.findViewById<Button>(R.id.otpSubmitBtn)
         val signupButton = view.findViewById<Button>(R.id.button_signup)
         val passrestButton = view.findViewById<TextView>(R.id.frogot_password_link)
         val loginEmail = view.findViewById<EditText>(R.id.edtTxtLoginUserEmail)

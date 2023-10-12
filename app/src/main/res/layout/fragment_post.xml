@@ -8,85 +8,96 @@
     tools:context=".PostFragment"
     android:background="@color/white">
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_gravity="center"
         android:orientation="vertical">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@color/orange"
-            android:gravity="center"
-            android:text="@string/title_NewPost"
-            android:textSize="28sp"
-            android:textStyle="bold">
-
-        </TextView>
-
-
-        <ImageView
-            android:id="@+id/image_view"
-            android:layout_width="200dp"
-            android:layout_height="164dp"
-            android:layout_gravity="center"
-
-            android:layout_marginTop="15dp"
-            android:src="@drawable/new_post3" />
-
-
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardView1"
             android:layout_width="match_parent"
-            android:layout_height="300dp"
-
+            android:layout_height="match_parent"
             android:layout_marginTop="20dp"
             app:cardCornerRadius="8dp"
             app:cardElevation="8dp"
             app:cardUseCompatPadding="true"
-            app:layout_constraintHorizontal_bias="0.5"
-
-            >
-
-
-            <com.google.android.material.textfield.TextInputLayout
+            app:layout_constraintHorizontal_bias="0.5">
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
-                android:background="@color/white"
-                app:boxStrokeWidth="0dp"
-                app:boxStrokeWidthFocused="0dp"
-                app:hintEnabled="false">
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:id="@+id/tvMessages"
+                    android:layout_width="match_parent"
+                    android:layout_height="82dp"
+                    android:background="@color/indigo_500"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="@string/addtomarket"
+                    android:textColor="@color/black"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+
+        <ImageView
+            android:id="@+id/image_view"
+            android:layout_width="157dp"
+            android:layout_height="122dp"
+
+            android:layout_gravity="center"
+            android:src="@drawable/new_post3"
+            app:srcCompat="@android:drawable/ic_menu_gallery" />
+
+                <EditText
+                    android:id="@+id/medName"
+                    android:layout_width="match_parent"
+                    android:layout_height="58dp"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:hint="@string/mednam"
+                    android:inputType="text"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
+                    android:textSize="20sp" />
 
                 <EditText
                     android:id="@+id/post_detail_text_view"
                     android:layout_width="match_parent"
-                    android:layout_height="243dp"
+                    android:layout_height="58dp"
                     android:background="@color/white"
-                    android:gravity="start"
-                    android:hint="@string/newPostHint"
+                    android:gravity="center"
+                    android:hint="@string/asd"
                     android:inputType="text"
-                    android:paddingStart="12dp"
-                    android:paddingTop="15dp"
                     android:textColor="@color/black"
                     android:textColorHint="@color/black"
-                    android:textSize="16sp" />
-            </com.google.android.material.textfield.TextInputLayout>
+                    android:textSize="20sp" />
 
+                <EditText
+                    android:id="@+id/postPrice"
+                    android:layout_width="match_parent"
+                    android:layout_height="49dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:hint="@string/prio"
+                    android:inputType="numberDecimal"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
+                    android:textSize="20sp" />
 
+            <Button
+                android:id="@+id/postButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/btn_post"
+                android:textSize="@dimen/button_textSize" />
+            </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
-
-        <Button
-            android:id="@+id/postButton"
-            android:layout_width="@dimen/width_inputbutton"
-            android:layout_height="@dimen/height_inputbutton"
-            android:layout_gravity="center"
-
-            android:width="@dimen/width_inputbutton"
-            android:gravity="center|center_horizontal|center_vertical"
-            android:text="@string/btn_post"
-            android:textSize="@dimen/button_textSize" />
-
     </LinearLayout>
+
 </FrameLayout>

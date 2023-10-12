@@ -11,7 +11,7 @@
         android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="@dimen/header_height"
-        android:background="@color/orange"
+        android:background="@color/indigo_500"
         android:gravity="center|center_horizontal"
         android:text="@string/app_name"
         android:textColor="@color/black"
@@ -60,7 +60,7 @@
         android:inputType="textPassword" />
 
     <Button
-        android:id="@+id/button_register"
+        android:id="@+id/otpSubmitBtn"
         android:layout_width="@dimen/width_inputbutton"
         android:layout_height="@dimen/height_inputbutton"
         android:layout_gravity="center"

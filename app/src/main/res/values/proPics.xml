@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="my_drawables">
+        <item>@drawable/ss2</item>
+        <item>@drawable/ss3</item>
+        <item>@drawable/ss4</item>
+        <item>@drawable/ss5</item>
+        <item>@drawable/ss6</item>
+        <item>@drawable/ss7</item>
+        <item>@drawable/ss8</item>
+        <item>@drawable/ss9</item>
+        <item>@drawable/ss10</item>
+        <item>@drawable/ss11</item>
+        <item>@drawable/ss12</item>
+        <item>@drawable/ss13</item>
+    </array>
+</resources>
